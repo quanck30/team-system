@@ -63,8 +63,14 @@
 ## 📝 ワークフロー (Workflow)
 
 1.  作業開始前に必ず最新のコードを取得する: `git pull origin main`
-2.  機能ごとにブランチを作成する: `git checkout -b feature/your-feature-name`
-3.  コードをプッシュする前に、不要な `var_dump` や `console.log` が残っていないか確認してください。
+2.  コードをプッシュする前に、不要な `var_dump` や `console.log` が残っていないか確認してください。
+3. コードのプッシュ準備：
+```bash
+git add . 
+git commit -m "コメント内容"
+git push
+```
+
 
 ---
 ご不明な点があれば、Teamsに連絡してください。
