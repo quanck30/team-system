@@ -5,21 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="touroku.css">
     <title>登録画面</title>
+    
     <style>
+        
     header{
-
+            background-color: #3498db;
+            color: white;              
+            padding: 20px;              
+            text-align: center;
         }
     body {
-    
-    }
-    h1 {
-        
+    background-color: #ffffff;
     }
     </style>
 
 </head>
 <body>
-    <h1>登録画面</h1>
+     <header>
+        <h1>登録画面</h1>
+    </header>
+
     <h3>あなたの現在の安否を選択してください</h3>
     <form action="safetyList.php" method="post">
         <input type="checkbox" name="safety" value="安全">安全
