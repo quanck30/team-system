@@ -94,7 +94,15 @@
 ```bash
     git branch
 ```
+3. プッシュ
+* そのブランチにプッシュしてください
 
+```bash
+    git add .
+    git commit -m "コメント内容"
+    git push origin <ブランチ名>
+```
+4. GitHubを開いて「Pull Request」機能を使って、リクエストする
 ---
 
 ご不明な点があれば、Teamsに連絡してください。

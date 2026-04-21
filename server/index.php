@@ -52,10 +52,11 @@ try{
     $password = $stmt['password'];
     if($password === $hashpass){
 
-        /*TODO:システム管理部にチェックがついてたら管理者用メニューに遷移
+        /* システム管理部にチェックがついてたら管理者用メニューに遷移
         チェックがついていなかったら社員メニューに遷移
         */
-        if(){
+        
+        if($stmt['dept_no'] === "1"){
             header('Location:../client/page/TODO.php');
         } else {
             header('Location: ../client/page/Home.php');
