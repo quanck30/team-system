@@ -37,6 +37,7 @@ if (isset($_SESSION["emp_no"])) {
         ]);
         $pdo->commit();
     } catch (\Throwable $th) {
+        $_SESSION["safety_create_err"] = "作成できなかった";
         header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
         exit;
     }
