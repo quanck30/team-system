@@ -19,7 +19,7 @@ if(isset($emp_no)){
     exit;
 }
 //　IDがint型か
-if(is_int($emp_no)){
+if(!is_int($emp_no)){
     $_SESSION['message'] = "従業員番号に数字以外が入っています";
     header('Location: ../client/page/Home.php');
     exit;
@@ -45,27 +45,30 @@ try{
     $sql = "SELECT * FROM EMPLOYEE WHERE EMP_NO = :emp_no";
 
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':emp_no' , $emp_no , PDO::PARAM_STR);
+    //bindValueで型が正しいか確認
+    $stmt->bindValue(':emp_no' , $emp_no , PDO::PARAM_INT);
 
-    //TODO: ハッシュ化したパスワードを送る
+    // ハッシュ化したパスワードを照合
     $password = $stmt['password'];
-    if(){
+    if($password === $hashpass){
 
-    }
-    //TODO:番号で社員を管理 DBとデータを照合
-
-    //TODO:照合して合致したデータを引っ張てくる
-
-    //TODO:ユーザーネームとパスワードをDBのデータと照合
-
-    /*TODO:システム管理部にチェックがついてたら管理者用メニューに遷移
-    チェックがついていなかったら社員メニューに遷移
-    */
-    if($_POST["/* TODO: */"]){
-        $kengen = true; //管理用の権限
+        /*TODO:システム管理部にチェックがついてたら管理者用メニューに遷移
+        チェックがついていなかったら社員メニューに遷移
+        */
+        if(){
+            header('Location:../client/page/TODO.php');
+        } else {
+            header('Location: ../client/page/Home.php');
+        }
+        
+    //パスワードが間違ってたらHomeに遷移
+    } else {
+        header('Location: ../client/page/Home.php');
+        exit;
     }
 
     //TODO:セッションの保存
+
 } catch (PDOException $poe) {
     exit("DBエラー" . $poe->getMessage());//開発時だけメッセージ表示
 }
