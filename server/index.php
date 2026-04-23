@@ -1,12 +1,14 @@
 <?php
 //ログイン画面のサーバー側
 //マサキカイリ
-// Home.phpからもらってきたログイン情報をここで処理してログイン情報を返す
+// Home.phpからもらってきたログイン情報をここで処理してログイン情報を渡す
 
 //POSTじゃないならHomeに返す
-if($_SERVER["REQUEST_METHOD"] !== "POST"){
-header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
-exit;
+function access(){
+    if($_SERVER["REQUEST_METHOD"] !== "POST"){
+    header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
+    exit;
+    }
 }
 
 require_once __DIR__ . "../helpers/def.php";
@@ -71,11 +73,12 @@ try{
     if(password_verify( $pass , $user['password'])){
         //dept_no(部署)が１なら管理人の画面に遷移
         //headerの管理人側のページを変数に格納
-        $page = "TODO";
+        $page = "TODO";//TODO
         $dept_no = $user['DEPT_NO'];
 
         // セッションの保存（社員番号）
         $_SESSION['emp_no'] = $emp_no;
+        $_SESSION['dept_no'] = $dept_no;
         modoru($dept_no,$page);
         
         exit;
