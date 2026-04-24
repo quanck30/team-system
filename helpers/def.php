@@ -4,7 +4,7 @@
  * 定数を定義する
  */
 
-define("TEAM_SYSTEM", "http://localhost/team_system");
+define("TEAM_SYSTEM", "http://localhost/team-system");
 
 define("ASSET_URL", TEAM_SYSTEM . "/asset");
 
@@ -16,4 +16,3 @@ define("DB_USER", "user");
 define("DB_PASS", "password");
 define("DB_NAME", "dbname");
 define("DB_CHARSET", "utf8mb4");
-
