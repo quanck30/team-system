@@ -5,7 +5,6 @@
 require_once __DIR__ . "/../helpers/def.php";
 require_once __DIR__ . "/../helpers/utils.php";
 
-
 function access()
 {
     header("Location: " . TEAM_SYSTEM . "/client/index.php");
@@ -18,12 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 access();
 
 
-<<<<<<< HEAD
 function kengen($dept_no,$page){//管理者なのかチェック
-=======
-function modoru($dept_no, $page)
-{ //管理者なのかチェック
->>>>>>> 505b078d5f558814775d587de2e54fbdf67b56be
     if ($dept_no === "1") {
         header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
         exit;
@@ -35,12 +29,10 @@ function modoru($dept_no, $page)
 
 //セッションスタート
 session_start();
-//セッションにデータを保存
-$_SESSION['message'];
 
 //　IDが空じゃないか
-$emp_no = $_POST['emp_no'];
-if (isset($emp_no)) {
+$emp_no = filter_input(INPUT_POST, "emp_no", FILTER_VALIDATE_INT);
+if (empty($emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号が空です。";
     access();
 }
@@ -52,8 +44,8 @@ if (!is_int($emp_no)) {
 
 
 //　パスワードは空じゃないか
-$pass = $_POST['password'];
-if (isset($pass)) {
+$pass = filter_input(INPUT_POST, "password");
+if (empty($pass)) {
     $_SESSION['pass_err'] = "パスワードが空です。";
     access();
 }
@@ -78,7 +70,6 @@ try {
     $user = $stmt->fetch();
 
     // ハッシュ化したパスワードを照合
-    $password = $user['password'];
     if (password_verify($pass, $user['password'])) {
         // セッションの保存（社員番号）
         $_SESSION['emp_no'] = $emp_no;
@@ -87,16 +78,11 @@ try {
         //dept_no(部署)が１なら管理人の画面に遷移
         $page = "manager";
         $dept_no = $user['DEPT_NO'];
-<<<<<<< HEAD
         kengen($dept_no,$page);
-=======
->>>>>>> 505b078d5f558814775d587de2e54fbdf67b56be
 
         //  PDOオブジェクトを破棄
         $stmt = null;
         $db = null;
-        modoru($dept_no, $page);
-
 
         //パスワードが間違ってたらHomeに遷移
     } else {
