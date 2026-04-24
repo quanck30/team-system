@@ -15,7 +15,6 @@ function get_all_safety(): array
     }
 
     try {
-
         $pdo = getPDO();
         $select = "SELECT * FROM safety";
         $stmt = $pdo->prepare($select);
