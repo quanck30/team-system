@@ -10,17 +10,19 @@ function access(){
     exit;
     }
 }
+access();
 
 require_once __DIR__ . "../helpers/def.php";
 require_once __DIR__ . "../helpers/utils.php";
 
-function modoru($dept_no,$page){//管理者なのかチェック
+function kengen($dept_no,$page){//管理者なのかチェック
     if ($dept_no === "1") {
         header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
     } else {
         header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
     }
 }
+
 //セッションスタート
 session_start();
 //セッションにデータを保存
@@ -78,7 +80,7 @@ try{
         //dept_no(部署)が１なら管理人の画面に遷移
         $page = "manager";
         $dept_no = $user['DEPT_NO'];
-        modoru($dept_no,$page);
+        kengen($dept_no,$page);
 
         //  PDOオブジェクトを破棄
         $stmt = null;
