@@ -28,7 +28,7 @@
             <p>不要な安否情報を削除</p>
         </a>
        <div class="logout" class="card">
-            <a href="./../index.php"></a>    
+            <a href="./../index.php">ログアウト</a>    
         </div>
     </div>
     </div>
