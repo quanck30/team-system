@@ -1,74 +1,95 @@
 <?php
-// Home.phpからもらってきたログイン情報をここで処理してログイン情報を返す
-if($_SERVER["REQUEST_METHOD"] === "POST"){
+//ログイン画面のサーバー側
+//マサキカイリ
+// Home.phpからもらってきたログイン情報をここで処理してログイン情報を渡す
+require_once __DIR__ . "/../helpers/def.php";
+require_once __DIR__ . "/../helpers/utils.php";
 
+function access()
+{
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
+    exit;
 }
-require_once __DIR__ . "../helpers/def.php";
-require_once __DIR__ . "../helpers/utils.php";
+//POSTじゃないならHomeに返す
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    access();
+}
+access();
+
+
+function kengen($dept_no,$page){//管理者なのかチェック
+    if ($dept_no === "1") {
+        header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
+        exit;
+    } else {
+        header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
+        exit;
+    }
+}
 
 //セッションスタート
 session_start();
-//セッションにデータを保存
-$_SESSION['message'];
 
 //　IDが空じゃないか
-$emp_no = $_POST['emp_no'];
-if(isset($emp_no)){
-    $_SESSION['message'] = "従業員番号が空です。";
-    header('Location: ../client/page/Home.php');
-    exit;
+$emp_no = filter_input(INPUT_POST, "emp_no", FILTER_VALIDATE_INT);
+if (empty($emp_no)) {
+    $_SESSION['emp_no_err'] = "従業員番号が空です。";
+    access();
 }
 //　IDがint型か
-if(is_int($emp_no)){
-    $_SESSION['message'] = "従業員番号に数字以外が入っています";
-    header('Location: ../client/page/Home.php');
-    exit;
+if (!is_int($emp_no)) {
+    $_SESSION['emp_no_err'] = "従業員番号に数字以外が入っています";
+    access();
 }
 
+
 //　パスワードは空じゃないか
-$pass = $_POST['password'];
-if(isset($pass)){
-    $_SESSION['message'] = "パスワードが空です。";
-    header('Location: ../client/page/Home.php');
-    exit;
+$pass = filter_input(INPUT_POST, "password");
+if (empty($pass)) {
+    $_SESSION['pass_err'] = "パスワードが空です。";
+    access();
 }
 
 // パスワードをハッシュ化
-$hashpass = password_hash($pass , PASSWORD_DEFAULT);
+// $hashpass = password_verify($pass , PASSWORD_DEFAULT);
 
 
-try{
+try {
     // データべースと接続
-    $dbf -> getPDO();
+    $db = getPDO();
 
     //社員IDで情報をとってくる
     $sql = "SELECT * FROM EMPLOYEE WHERE EMP_NO = :emp_no";
 
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':emp_no' , $emp_no , PDO::PARAM_STR);
+    //bindValueで型が正しいか確認
+    $stmt->bindValue(':emp_no', $emp_no, PDO::PARAM_INT);
 
-    //TODO: ハッシュ化したパスワードを送る
-    $password = $stmt['password'];
-    if(){
+    //userに結果を格納
+    $stmt->execute();
+    $user = $stmt->fetch();
 
+    // ハッシュ化したパスワードを照合
+    if (password_verify($pass, $user['password'])) {
+        // セッションの保存（社員番号）
+        $_SESSION['emp_no'] = $emp_no;
+        $_SESSION['dept_no'] = $dept_no;
+
+        //dept_no(部署)が１なら管理人の画面に遷移
+        $page = "manager";
+        $dept_no = $user['DEPT_NO'];
+        kengen($dept_no,$page);
+
+        //  PDOオブジェクトを破棄
+        $stmt = null;
+        $db = null;
+
+        //パスワードが間違ってたらHomeに遷移
+    } else {
+        $_SESSION["pass_err"] = "パスワードが間違っている";
+        access();
     }
-    //TODO:番号で社員を管理 DBとデータを照合
-
-    //TODO:照合して合致したデータを引っ張てくる
-
-    //TODO:ユーザーネームとパスワードをDBのデータと照合
-
-    /*TODO:システム管理部にチェックがついてたら管理者用メニューに遷移
-    チェックがついていなかったら社員メニューに遷移
-    */
-    if($_POST["/* TODO: */"]){
-        $kengen = true; //管理用の権限
-    }
-
-    //TODO:セッションの保存
 } catch (PDOException $poe) {
-    exit("DBエラー" . $poe->getMessage());//開発時だけメッセージ表示
+    access();
+    // exit("DBエラー" . $poe->getMessage());//開発時だけメッセージ表示
 }
-
-?>
- 
