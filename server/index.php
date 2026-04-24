@@ -1,12 +1,14 @@
 <?php
 //ログイン画面のサーバー側
 //マサキカイリ
-// Home.phpからもらってきたログイン情報をここで処理してログイン情報を返す
+// Home.phpからもらってきたログイン情報をここで処理してログイン情報を渡す
 
 //POSTじゃないならHomeに返す
-if($_SERVER["REQUEST_METHOD"] !== "POST"){
-header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
-exit;
+function access(){
+    if($_SERVER["REQUEST_METHOD"] !== "POST"){
+    header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
+    exit;
+    }
 }
 
 require_once __DIR__ . "../helpers/def.php";
@@ -53,31 +55,34 @@ if(isset($pass)){
 
 try{
     // データべースと接続
-    $dbf -> getPDO();
+    $db = getPDO();
 
     //社員IDで情報をとってくる
     $sql = "SELECT * FROM EMPLOYEE WHERE EMP_NO = :emp_no";
 
-    $stmt = $db->prepare($sql);
+    $stmt = $db -> prepare($sql);
     //bindValueで型が正しいか確認
     $stmt->bindValue(':emp_no' , $emp_no , PDO::PARAM_INT);
 
-    //resultに結果を格納
+    //userに結果を格納
      $stmt->execute();
      $user = $stmt -> fetch();
 
     // ハッシュ化したパスワードを照合
     $password = $user['password'];
     if(password_verify( $pass , $user['password'])){
-        //dept_no(部署)が１なら管理人の画面に遷移
-        //headerの管理人側のページを変数に格納
-        $page = "TODO";
-        $dept_no = $user['DEPT_NO'];
-
         // セッションの保存（社員番号）
         $_SESSION['emp_no'] = $emp_no;
+        $_SESSION['dept_no'] = $dept_no;
+
+        //dept_no(部署)が１なら管理人の画面に遷移
+        $page = "manager";
+        $dept_no = $user['DEPT_NO'];
         modoru($dept_no,$page);
-        
+
+        //  PDOオブジェクトを破棄
+        $stmt = null;
+        $db = null;
         exit;
         
     //パスワードが間違ってたらHomeに遷移

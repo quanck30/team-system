@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="ja">
 <?php
 // 安否一覧表示画面
 // 2026・04・21
