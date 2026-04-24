@@ -75,6 +75,13 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
                 </tr>
             </tbody>
 
+    <?php echo $emp_no  ?><br>
+    </div>
+    
+        <div class="title">
+    <a href="safetydetail.php">安否詳細画面</a>
+        
+    </div>
         </table>
     </section>
 </body>

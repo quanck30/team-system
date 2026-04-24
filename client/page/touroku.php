@@ -3,36 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="touroku.css">
+    <link rel="stylesheet" href="dezain.css">
     <title>登録画面</title>
     
-    <style>
-        
-    header{
-            background-color: #3498db;
-            color: white;              
-            padding: 20px;              
-            text-align: center;
-        }
-    body {
-    background-color: #ffffff;
-    }
-    </style>
 
 </head>
 <body>
-     <header>
+    <header>
         <h1>登録画面</h1>
     </header>
-
-    <h3>あなたの現在の安否を選択してください</h3>
     <form action="safetyList.php" method="post">
-        <input type="checkbox" name="safety" value="安全">安全
-        <input type="checkbox" name="safety" value="危険">危険<br>
-        <label for="date">日付を選択してください:</label>
-        <input type="date" id="date" name="date">
-        <input type="submit" value="送信">
+    <div class="box">
+        <div class="title">
+           <h2>安否確認</h2> 
+        </div>
+        <div class="form">
+            <label>安否</label>
+            <input type="radio" name="safety" value="1">安全
+            <input type="radio" name="safety" value="2">危険
+        </div>
+        <div class="form-row">
+        <label>コメント</label>
+        <input type="text">
+    </div>
+      <input type="submit" value="送信">
     </form>
+
+    </div>
+    
+    
+      
+      
 
 
 
