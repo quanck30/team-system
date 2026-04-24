@@ -4,7 +4,6 @@ use GuzzleHttp\Exception\RequestException;
 
 require_once __DIR__ . "/def.php";
 
-require_once __DIR__ . "/../lib/vendor/autoload.php";
 /**
  * 汎用関数を定義する
  */
