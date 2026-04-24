@@ -15,10 +15,15 @@ function access()
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     access();
 }
+access();
 
 
+<<<<<<< HEAD
+function kengen($dept_no,$page){//管理者なのかチェック
+=======
 function modoru($dept_no, $page)
 { //管理者なのかチェック
+>>>>>>> 505b078d5f558814775d587de2e54fbdf67b56be
     if ($dept_no === "1") {
         header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
         exit;
@@ -27,6 +32,7 @@ function modoru($dept_no, $page)
         exit;
     }
 }
+
 //セッションスタート
 session_start();
 //セッションにデータを保存
@@ -81,6 +87,10 @@ try {
         //dept_no(部署)が１なら管理人の画面に遷移
         $page = "manager";
         $dept_no = $user['DEPT_NO'];
+<<<<<<< HEAD
+        kengen($dept_no,$page);
+=======
+>>>>>>> 505b078d5f558814775d587de2e54fbdf67b56be
 
         //  PDOオブジェクトを破棄
         $stmt = null;
