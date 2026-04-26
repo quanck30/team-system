@@ -36,8 +36,8 @@ function user_detail($emp_no)
     }catch(PDOException $poe){
         $_SESSION['error_message_detail'] = $poe;
         header("Location:" . TEAM_SYSTEM . "/client/page/manager.php");
+        exit;
     }
-exit;
 }
 
 

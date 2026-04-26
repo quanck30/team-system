@@ -44,8 +44,6 @@ function get_info()
         $db = null;
 
         return $result; //社員情報一覧を返す
-
-        exit;
     } catch(PDOException $poe){
         $_SESSION['error_message_list'] = $poe;
         // ページを管理者用メニュー画面に戻す

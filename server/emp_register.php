@@ -63,6 +63,8 @@ if($inputs['password'] !== $inputs['confirm_password']){
 
 $_SESSION['info_null'] = $errors;
 
+//TODO:呼び出し
+// register($inputs);
 function register($inputs)//引数にregisterform.phpの情報をとってくる
 {
     if(empty($errors)){
@@ -71,27 +73,42 @@ function register($inputs)//引数にregisterform.phpの情報をとってくる
             //DB登録
             $db = getPDO();
 
+            //トランザクション開始
+            $db -> beginTransaction();
+
             //sql文
-            $sql = "INSET INTO EMPLOYEE (
+            $sql = "INSERT INTO EMPLOYEE (
                         emp_no ,ename ,birthday ,sex ,tel ,address ,job ,salary ,dept_no ,mgr_no ,admin_role ,password
                     ) values (
                         :emp_no ,:ename ,:birthday ,:sex ,:tel ,:address ,:job ,:salary ,:dept_no ,:mgr_no ,:admin_role ,:password)";
 
-            $stmt = $db -> prepare($sql);//sqlの準備
-            //sex
-            if($inputs['sex'] === "M"){
-                //男性
-                $stmt -> bindValue('sex' , 'M' ,PDO::PARAM_STR);
-            } else {
-                //女性
-                $stmt->bindValue('sex', 'F', PDO::PARAM_STR);
-            }
-            //dept_no
-            //admin_role
-            // パスワードのハッシュ化
+            $stmt = $db -> prepare($sql); //sqlの準備
+
+            $params = [
+                ':emp_no'     => $inputs['emp_no'],
+                ':ename'      => $inputs['ename'],
+                ':birthday'   => $inputs['birthday'],
+                ':sex'        => $inputs['sex'],
+                ':tel'        => $inputs['tel'],
+                ':address'    => $inputs['address'],
+                ':job'        => $inputs['job'],
+                ':salary'     => $inputs['salary'],
+                ':dept_no'    => $inputs['dept_no'],
+                ':mgr_no'     => $inputs['mgr_no'],
+                ':admin_role' => $inputs['admin_role'],
+                ':password'   => password_hash($inputs['password'], PASSWORD_DEFAULT), // ハッシュ化
+            ];
+
+            $stmt->execute($params);
+
+            //コミット
+            $db -> commit();
+            $_SESSION['register_success'] = "データの登録が成功しました";
 
         } catch (PDOException $poe){
-
+                $db -> rollback();
+                $_SESSION['register_error'] = $poe;
+                exit;
         }
     }
 }
