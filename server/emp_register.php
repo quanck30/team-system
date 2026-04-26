@@ -2,16 +2,19 @@
 //社員情報の登録（サーバー）
 // マサキカイリ
 
-require_once __DIR__ . "/../server/index.php";
+require_once __DIR__ . "/../helpers/function.php";
 require_once __DIR__ . "/../helpers/def.php";
 require_once __DIR__ . "/../helpers/utils.php";
 
 //URLの直打ちを対策
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    access();
-}
-//管理人かどうか
-kengen($_SESSION['dept_no']);
+access($_SESSION['dept_no']);
+
+// if ($_SERVER["REQUEST_METHOD"] !== "POST") { 
+//     homeidou();
+// }
+
+//セッションスタート
+session_start();
 
 // $emp_no = $_POST['emp_no'] ?? ""; 
 // $ename = $_POST['ename'] ?? ""; 
@@ -41,7 +44,7 @@ $info_fields = [
     'salary' => '給与',
     'dept_no' => '部署番号',
     'mgr_no' => '管理番号',
-    'admin_role' => '管理者権限',//TODO:管理者権限には何が入る？
+    'admin_role' => '管理者権限',
     'password' => 'パスワード',
     'confirm_password' => 'パスワード確認',
 ];
@@ -49,67 +52,59 @@ $info_fields = [
 $errors = [];
 
 //値が空かどうかのチェックのループ
-foreach($info_fields as $info => $label){
-    if(empty($inputs[$info])){
+foreach ($info_fields as $info => $label) {
+    if (empty($inputs[$info])) {
         $errors[] = "{$label}が入力されていません";
-
     }
 }
 
 //パスワードが再確認用のパスワードと同じかどうか
-if($inputs['password'] !== $inputs['confirm_password']){
+if ($inputs['password'] !== $inputs['confirm_password']) {
     $errors[] = "パスワードが違います";
 }
 
 $_SESSION['info_null'] = $errors;
 
-//TODO:呼び出し
-// register($inputs);
-function register($inputs)//引数にregisterform.phpの情報をとってくる
-{
-    if(empty($errors)){
+if (empty($errors)) {
+    try {
+        //DB登録
+        $db = getPDO();
 
-        try{
-            //DB登録
-            $db = getPDO();
+        //トランザクション開始
+        $db->beginTransaction();
 
-            //トランザクション開始
-            $db -> beginTransaction();
-
-            //sql文
-            $sql = "INSERT INTO EMPLOYEE (
+        //sql文
+        $sql = "INSERT INTO EMPLOYEE (
                         emp_no ,ename ,birthday ,sex ,tel ,address ,job ,salary ,dept_no ,mgr_no ,admin_role ,password
                     ) values (
                         :emp_no ,:ename ,:birthday ,:sex ,:tel ,:address ,:job ,:salary ,:dept_no ,:mgr_no ,:admin_role ,:password)";
 
-            $stmt = $db -> prepare($sql); //sqlの準備
+        $stmt = $db->prepare($sql); //sqlの準備
 
-            $params = [
-                ':emp_no'     => $inputs['emp_no'],
-                ':ename'      => $inputs['ename'],
-                ':birthday'   => $inputs['birthday'],
-                ':sex'        => $inputs['sex'],
-                ':tel'        => $inputs['tel'],
-                ':address'    => $inputs['address'],
-                ':job'        => $inputs['job'],
-                ':salary'     => $inputs['salary'],
-                ':dept_no'    => $inputs['dept_no'],
-                ':mgr_no'     => $inputs['mgr_no'],
-                ':admin_role' => $inputs['admin_role'],
-                ':password'   => password_hash($inputs['password'], PASSWORD_DEFAULT), // ハッシュ化
-            ];
+        $params = [
+            ':emp_no'     => $inputs['emp_no'],
+            ':ename'      => $inputs['ename'],
+            ':birthday'   => $inputs['birthday'],
+            ':sex'        => $inputs['sex'],
+            ':tel'        => $inputs['tel'],
+            ':address'    => $inputs['address'],
+            ':job'        => $inputs['job'],
+            ':salary'     => $inputs['salary'],
+            ':dept_no'    => $inputs['dept_no'],
+            ':mgr_no'     => $inputs['mgr_no'],
+            ':admin_role' => $inputs['admin_role'],
+            ':password'   => password_hash($inputs['password'], PASSWORD_DEFAULT), // ハッシュ化
+        ];
 
-            $stmt->execute($params);
+        $stmt->execute($params);
 
-            //コミット
-            $db -> commit();
-            $_SESSION['register_success'] = "データの登録が成功しました";
-
-        } catch (PDOException $poe){
-                $db -> rollback();
-                $_SESSION['register_error'] = $poe;
-                exit;
-        }
+        //コミット
+        $db->commit();
+        $_SESSION['register_success'] = "データの登録が成功しました";
+    } catch (PDOException $poe) {
+        $db->rollback();
+        $_SESSION['register_err'] = "データの登録に失敗しました   <br>詳細：" . $poe->getMessage();
+        exit;
     }
 }
 ?>
