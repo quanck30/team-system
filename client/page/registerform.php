@@ -50,8 +50,8 @@
             <option value="4"></option>
         </select>
 
-        <label>管理番号 (MER_NO)</label>
-        <input name="mer_no" type="number">
+        <label>管理番号 (MGR_NO)</label>
+        <input name="mgr_no" type="number">
 
         <label>管理者権限 (ADMIN_ROLE)</label>
         <select name="admin_role">

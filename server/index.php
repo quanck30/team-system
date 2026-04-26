@@ -8,24 +8,25 @@ require_once __DIR__ . "/../helpers/utils.php";
 
 function access()
 {
-    header("Location: " . TEAM_SYSTEM . "/client/index.php");
+    //Home.phpに遷移
+    header("Location: " . TEAM_SYSTEM . "/client/Home.php");
     exit;
 }
-//POSTじゃないならHomeに返す
+//URL直打ちを対策
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     access();
 }
-access();
 
 
-function kengen($dept_no,$page){//管理者なのかチェック
-    if ($dept_no === "1") {
-        header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
-        exit;
-    } else {
+
+function kengen($dept_no){//管理者なのかチェック
+    if ($dept_no !== "1") {
         header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
-        exit;
     }
+}
+function nextpage($page)//次のページに遷移
+{
+    header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
 }
 
 //セッションスタート
@@ -80,21 +81,24 @@ try {
         $_SESSION['dept_no'] = $dept_no;
 
         //dept_no(部署)が１なら管理人の画面に遷移
-        $page = "manager";
         $dept_no = $user['DEPT_NO'];
-        kengen($dept_no,$page);
-
+        if ($dept_no === "1") {
+            // $page = "manager";
+            nextpage("manager");
+        } else {
+            //安否登録画面に遷移
+            nextpage("touroku");
+        }
         //  PDOオブジェクトを破棄
         $stmt = null;
         $db = null;
-
-
-        //パスワードが間違ってたらHomeに遷移
+    //パスワードが間違ってたらHomeに遷移
     } else {
         $_SESSION["pass_err"] = "パスワードが間違っている";
         access();
     }
+    exit;
 } catch (PDOException $poe) {
     access();
-    // exit("DBエラー" . $poe->getMessage());//開発時だけメッセージ表示
+    exit("DBエラー" . $poe->getMessage());//開発時だけメッセージ表示
 }

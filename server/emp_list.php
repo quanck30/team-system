@@ -3,19 +3,20 @@
 //マサキカイリ
 
 //
-require_once __DIR__ . "../server/index.php";
-require_once __DIR__ . "../helpers/def.php";
-require_once __DIR__ . "../helpers/utils.php";
+require_once __DIR__ . "/../server/index.php";
+require_once __DIR__ . "/../helpers/def.php";
+require_once __DIR__ . "/../helpers/utils.php";
 
 //URL直打ちの対策
-access();
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    access();
+}
 
 // $page = "manager";// 管理者用メニュー画面に戻すパス
 // kengen($_SESSION['dept_no'] ?? 0 , $page); //0の場合Home.phpに遷移
 
-if($_SESSION['dept_no'] !== 1){//管理人かチェック
-    header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
-}
+//管理人かどうか
+kengen($_SESSION['dept_no']);
 
 function get_info()
 {
@@ -46,6 +47,7 @@ function get_info()
 
         exit;
     } catch(PDOException $poe){
+        $_SESSION['error_message_list'] = $poe;
         // ページを管理者用メニュー画面に戻す
         header("Location:" . TEAM_SYSTEM . "/client/page/manager.php");
         exit;

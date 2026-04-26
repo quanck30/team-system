@@ -2,12 +2,17 @@
 //社員の詳細画面
 //マサキカイリ
 
-require_once __DIR__ . "../server/index.php";
-require_once __DIR__ . "../helpers/def.php";
-require_once __DIR__ . "../helpers/utils.php";
+require_once __DIR__ . "/../server/index.php";
+require_once __DIR__ . "/../helpers/def.php";
+require_once __DIR__ . "/../helpers/utils.php";
 
 //URL直打ちの対策
-access();
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    access();
+}
+
+//管理人かどうか
+kengen($_SESSION['dept_no']);
 
 function user_detail($emp_no)
 {
@@ -29,7 +34,7 @@ function user_detail($emp_no)
         return $user;
 
     }catch(PDOException $poe){
-        $_SESSION['error_message'] = $poe;
+        $_SESSION['error_message_detail'] = $poe;
         header("Location:" . TEAM_SYSTEM . "/client/page/manager.php");
     }
 exit;
