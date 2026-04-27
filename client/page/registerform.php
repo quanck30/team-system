@@ -55,8 +55,8 @@
 
         <label>管理者権限 (ADMIN_ROLE)</label>
         <select name="admin_role">
-            <option value="user">一般ユーザー</option>
-            <option value="admin">管理者</option>
+            <option value="0">一般ユーザー</option>
+            <option value="1">管理者</option>
         </select>
 
         <label>パスワード</label>
@@ -69,7 +69,7 @@
 
     </form>
 
-    <p><a href="index.php">ログインに戻る</a></p>
+    <p><a href="../index.php">ログインに戻る</a></p>
 
 </div>
 </body>

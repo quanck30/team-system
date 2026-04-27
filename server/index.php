@@ -18,8 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 
-function kengen($dept_no, $page)
-{ //管理者なのかチェック
+function kengen($dept_no,$page){//管理者なのかチェック
     if ($dept_no === "1") {
         header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
         exit;
@@ -75,16 +74,12 @@ try {
         //dept_no(部署)が１なら管理人の画面に遷移
         $page = "manager";
         $dept_no = $user['DEPT_NO'];
-
-        // セッションの保存（社員番号）
-        $_SESSION['emp_no'] = $emp_no;
-        $_SESSION['dept_no'] = $dept_no;
-
-        kengen($dept_no, $page);
+        kengen($dept_no,$page);
 
         //  PDOオブジェクトを破棄
         $stmt = null;
         $db = null;
+
 
         //パスワードが間違ってたらHomeに遷移
     } else {
