@@ -13,8 +13,6 @@ access($_SESSION['dept_no']);
 //     homeidou();
 // }
 
-
-
 //セッションスタート
 session_start();
 

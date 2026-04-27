@@ -48,6 +48,7 @@ function get_info()
 
         return $result; //社員情報一覧を返す
         //TODO:セッションに保存するかどうか
+        //TODO:絞り込み機能検討
     } catch(PDOException $poe){
         $_SESSION['error_message_list'] = $poe->getMessage();
         // ページを管理者用メニュー画面に戻す

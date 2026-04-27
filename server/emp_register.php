@@ -98,7 +98,7 @@ if (empty($errors)) {
 
         $stmt->execute($params);
 
-        //コミット
+        //コミット  
         $db->commit();
         $_SESSION['register_success'] = "データの登録が成功しました";
     } catch (PDOException $poe) {

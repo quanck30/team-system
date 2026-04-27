@@ -23,12 +23,12 @@ if (!is_int($emp_no)) {
 
 // パスワードは空じゃないか
 $pass = $_POST['password'];
-if (isset($pass)) {
+if (empty($pass)) {
     $_SESSION['pass_err'] = "パスワードが空です。 <br>";
 }
 
 // パスワードが8文字以上か
-if(strlen($pass) < 7){
+if(strlen(trim($pass)) <= 7){
 $_SESSION['pass_err'] = "パスワードを8文字以上に設定してください";
 }
 
@@ -63,6 +63,9 @@ try {
         // セッションの保存（社員番号）
         $_SESSION['emp_no'] = $emp_no;
         $_SESSION['dept_no'] = $dept_no;
+
+        //ログインしたユーザーの全情報をセッションに保存
+        $_SESSION['user'] = $user;
 
         //dept_no(部署)が１なら管理人の画面に遷移
         $dept_no = $user['DEPT_NO'];
