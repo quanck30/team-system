@@ -5,7 +5,8 @@
 require_once __DIR__ . "/../helpers/def.php";
 require_once __DIR__ . "/../helpers/utils.php";
 
-
+//セッションスタート
+session_start();
 function access()
 {
     header("Location: " . TEAM_SYSTEM . "/client/index.php");
@@ -15,7 +16,6 @@ function access()
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     access();
 }
-access();
 
 
 function kengen($dept_no,$page){//管理者なのかチェック
@@ -28,27 +28,23 @@ function kengen($dept_no,$page){//管理者なのかチェック
     }
 }
 
-//セッションスタート
-session_start();
-//セッションにデータを保存
-$_SESSION['message'];
 
 //　IDが空じゃないか
-$emp_no = $_POST['emp_no'];
-if (isset($emp_no)) {
+$raw_emp_no = $_POST['emp_no'] ?? "";
+if (empty($raw_emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号が空です。";
     access();
 }
 //　IDがint型か
-if (!is_int($emp_no)) {
+if (!ctype_digit($raw_emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号に数字以外が入っています";
     access();
 }
 
-
+$emp_no = (int) $raw_emp_no;
 //　パスワードは空じゃないか
-$pass = $_POST['password'];
-if (isset($pass)) {
+$pass = filter_input(INPUT_POST, "password");
+if (empty($pass)) {
     $_SESSION['pass_err'] = "パスワードが空です。";
     access();
 }
@@ -73,11 +69,7 @@ try {
     $user = $stmt->fetch();
 
     // ハッシュ化したパスワードを照合
-    $password = $user['password'];
     if (password_verify($pass, $user['password'])) {
-        // セッションの保存（社員番号）
-        $_SESSION['emp_no'] = $emp_no;
-        $_SESSION['dept_no'] = $dept_no;
 
         //dept_no(部署)が１なら管理人の画面に遷移
         $page = "manager";

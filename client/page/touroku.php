@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dezain.css">
+    <link rel="stylesheet" href="../css/dezain.css">
+
     <title>登録画面</title>
     
 
@@ -22,9 +23,17 @@
             <input type="radio" name="safety" value="1">安全
             <input type="radio" name="safety" value="2">危険
         </div>
+        <div class="form-group horizpntal-layout">
+        <label class="form-label">
         <div class="form-row">
-        <label>コメント</label>
-        <input type="text">
+        コメント
+        </label>
+        <input type="text"
+               class="form-input"
+               name="name"
+               placeholder="例）けがあり"
+               required>
+               </div>
     </div>
       <input type="submit" value="送信">
     </form>
