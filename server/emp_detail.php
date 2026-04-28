@@ -27,7 +27,7 @@ function user_detail($emp_no)
 
         $stmt = $db->prepare($sql);
         //bindValueで型が正しいか確認
-        $stmt->bindValue(':emp_no', $emp_no, PDO::PARAM_INT);
+        $stmt->bindValue(':emp_no', $emp_no, PDO::PARAM_STR);
 
         //userに結果を格納
         $stmt->execute();

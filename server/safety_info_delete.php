@@ -1,5 +1,5 @@
 <?php
-//安否情報削除画面
+//安否情報削除画面 不要になった社員の情報を削除
 //delete
 
 require_once __DIR__ . "/../helpers/function.php";
@@ -25,7 +25,7 @@ try{
 
     $sql = "DELETE FROM EMPLOYEE WHERE emp_no = :emp_no";
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':emp_no' , $emp_no , PDO::PARAM_INT);
+    $stmt->bindValue(':emp_no' , $emp_no , PDO::PARAM_STR);
     $stmt->execute();
 
     $db->commit();

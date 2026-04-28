@@ -23,7 +23,7 @@ $password = $_POST['password'];
 $emp_no = $_POST['emp_no'];
 
 if(empty($password) || empty($emp_no)){
-    $_SESSION[''] = "";
+    $_SESSION['empty_pass_emp_no'] = "パスワードもしくは従業員番号が空です";
     exit;
 }
 
@@ -37,8 +37,8 @@ try{
     $sql = "UPDATE EMPLOYEE SET password = :password WHERE emp_no = :emp_no";
 
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':password', $password , );
-    $stmt->bindValue(':emp_no', $emp_no, PDO::PARAM_INT);
+    $stmt->bindValue(':password', $password , PDO::PARAM_STR);
+    $stmt->bindValue(':emp_no', $emp_no, PDO::PARAM_STR);
     $stmt->execute();
 
     $db->commit();

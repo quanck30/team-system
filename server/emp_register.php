@@ -58,13 +58,23 @@ foreach ($info_fields as $info => $label) {
     }
 }
 
+//英数字混合か判断 preg_matchは英数字が含まれてたら1 含まれていなかったら0を返す
+if(preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', $inputs['password']) === 0){
+    $errors['no_pass_mix'] = "パスワードは英数字混合にしてください。";
+}
+
+//パスワードが8文字以上か
+if (strlen(trim($inputs['password'])) <= 7) {
+    $errors['no_pass_enough'] = "パスワードを8文字以上に設定してください";
+}
+
 //パスワードが再確認用のパスワードと同じかどうか
 if ($inputs['password'] !== $inputs['confirm_password']) {
-    $errors[] = "パスワードが違います";
+    $errors['no_pass_err'] = "パスワードが違います";
 }
 
 
-$_SESSION['info_null'] = $errors;
+$_SESSION['info_null_err'] = $errors;
 
 if (empty($errors)) {
     try {
@@ -94,7 +104,7 @@ if (empty($errors)) {
             ':dept_no'    => $inputs['dept_no'],
             ':mgr_no'     => $inputs['mgr_no'],
             ':admin_role' => $inputs['admin_role'],
-            // 'password' => $inputs['password']//TODO:今だけ
+            // 'password' => $inputs['password']//TODO:rootユーザー作成後削除
             ':password'   => password_hash($inputs['password'], PASSWORD_DEFAULT), // ハッシュ化
         ];
 
