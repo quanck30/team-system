@@ -9,11 +9,6 @@ function get_all_safety(): array
 {
     $all_safety = [];
 
-    if ($_SERVER["REQUEST_METHOD"] !== "GET") {
-        header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
-        exit;
-    }
-
     try {
         $pdo = getPDO();
         $select = "SELECT * FROM safety";
@@ -30,12 +25,6 @@ function get_all_safety(): array
 function get_safety($emp_no)
 {
     $result = null;
-
-    if ($_SERVER["REQUEST_METHOD"] !== "GET") {
-        header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
-        exit;
-    }
-
     try {
         $pdo = getPDO();
         $select = "SELECT * FROM safety WHERE emp_no = :emp_no";
