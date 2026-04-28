@@ -7,11 +7,12 @@ require_once __DIR__ . "/../helpers/function.php";
 require_once __DIR__ . "/../helpers/def.php";
 require_once __DIR__ . "/../helpers/utils.php";
 
-//URL直打ちの対策と権限があるか
-access($_SESSION['dept_no']);
 
 //セッションスタート
 session_start();
+
+//URL直打ちの対策と権限があるか
+access($_SESSION['dept_no']);
 
 // if ($_SERVER["REQUEST_METHOD"] !== "POST") { 
 //     homeidou();

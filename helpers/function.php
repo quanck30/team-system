@@ -17,15 +17,6 @@ function access($dept_no)
     }
 };
 
-
-//管理者なのかチェック
-// function kengen($dept_no)
-// { 
-//     if ($dept_no !== "1") {
-//         homeidou();
-//     }
-// }
-
 //次のページに遷移
 function nextpage($page) 
 {

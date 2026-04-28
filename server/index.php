@@ -13,7 +13,7 @@ session_start();
 
 //　IDが空じゃないか
 $emp_no = $_POST['emp_no'];
-if (isset($emp_no)) {
+if (empty($emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号が空です。<br>";
 }
 //　IDがint型か

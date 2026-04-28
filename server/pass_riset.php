@@ -6,18 +6,17 @@ require_once __DIR__ . "/../helpers/function.php";
 require_once __DIR__ . "/../helpers/def.php";
 require_once __DIR__ . "/../helpers/utils.php";
 
-//URLの直打ちを対策
-access('dept_no');
 
-// if ($_SERVER["REQUEST_METHOD"] !== "POST") { //TODO:
-//     homeidou();
-// }
 
 //セッションスタート
 session_start();
 
-//管理者とURL対策
-access($dept_no);
+//URLの直打ちを対策
+access($_SESSION['dept_no']);
+
+// if ($_SERVER["REQUEST_METHOD"] !== "POST") { //TODO:
+//     homeidou();
+// }
 
 $password = $_POST['password'];
 $emp_no = $_POST['emp_no'];

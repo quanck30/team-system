@@ -6,6 +6,10 @@ require_once __DIR__ . "/../helpers/function.php";
 require_once __DIR__ . "/../helpers/def.php";
 require_once __DIR__ . "/../helpers/utils.php";
 
+
+//セッションスタート
+session_start();
+
 //URL直打ちの対策と権限があるか
 access($_SESSION['dept_no']);
 
@@ -13,8 +17,6 @@ access($_SESSION['dept_no']);
 //     homeidou();
 // }
 
-//セッションスタート
-session_start();
 
 function user_detail($emp_no)
 {
