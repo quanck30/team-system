@@ -14,15 +14,8 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社員安否一覧画面</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="../css/dezain.css">
-
-
-
-=======
     <link rel="stylesheet" href="./../css/index.css">
     <link rel="stylesheet" href="./../css/safety.css">
->>>>>>> 9a476dfcaef3f1bd597db5574a89a8ad26c3508f
 </head>
 
 <body>
