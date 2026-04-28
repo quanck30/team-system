@@ -5,7 +5,7 @@
 function homeidou()
 {
     //Home.phpに遷移
-    header("Location: " . TEAM_SYSTEM . "/client/Home.php");
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
     exit;
 };
 

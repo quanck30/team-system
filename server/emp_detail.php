@@ -25,6 +25,7 @@ function user_detail($emp_no)
         $db = getPDO();
 
         // sqlで社員のidで情報をとってくる
+        //joinで
         $sql = "SELECT * FROM EMPLOYEE WHERE EMP_NO = :emp_no";
 
         $stmt = $db->prepare($sql);
@@ -39,7 +40,7 @@ function user_detail($emp_no)
 
     }catch(PDOException $poe){
         $_SESSION['error_message_detail'] = $poe->getMessage();
-        nextpage("manager");
+        nextpage("kanrisha");
         // header("Location:" . TEAM_SYSTEM . "/client/page/manager.php");
         exit;
     }

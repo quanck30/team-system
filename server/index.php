@@ -81,17 +81,17 @@ try {
     // ハッシュ化したパスワードを照合
     if (password_verify($pass, $user['password'])) {
         // セッションの保存（社員番号）
-        $_SESSION['emp_no'] = $emp_no;
-        $_SESSION['dept_no'] = $dept_no;//TODO:要相談
+        $_SESSION['emp_no'] = $user['emp_no'];
+        $_SESSION['dept_no'] = $user['dept_no'];//TODO:要相談
 
         //ログインしたユーザーの全情報をセッションに保存
-        $_SESSION['user'] = $user;
+        // $_SESSION['user'] = $user;
 
         //dept_no(部署)が１なら管理人の画面に遷移
         $dept_no = $user['DEPT_NO'];
         if ($dept_no === "1") {
             // $page = "manager";
-            nextpage("manager");
+            nextpage("kanrisha");
         } else {
             //安否登録画面に遷移
             nextpage("touroku");
