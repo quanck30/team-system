@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/dezain.css">
-
+    <link rel="stylesheet" href="../css/touroku.css">
     <title>登録画面</title>
     
 
@@ -14,27 +13,36 @@
         <h1>登録画面</h1>
     </header>
     <form action="safetyList.php" method="post">
-    <div class="box">
+    
         <div class="title">
            <h2>安否確認</h2> 
         </div>
         <div class="form">
-            <label>安否</label>
-            <input type="radio" name="safety" value="1">安全
-            <input type="radio" name="safety" value="2">危険
+            <label>　安否状況　　　　</label>
+            <input type="radio" name="safety" value="1">無事
+            <input type="radio" name="safety" value="2">軽傷
+            <input type="radio" name="safety" value="3">重症
+            <input type="radio" name="safety" value="4">救助か必要
         </div>
+        <div class="form">
+            <label>出社は可能ですか？</label>
+            <input type="radio" name="yesno" value="1">可能
+            <input type="radio" name="yesno" value="2">在宅のみ可能
+            <input type="radio" name="yesno" value="3">不可
+        </div>
+       
+        コメント
         <div class="form-group horizpntal-layout">
         <label class="form-label">
         <div class="form-row">
-        コメント
+        
         </label>
-        <input type="text"
-               class="form-input"
-               name="name"
-               placeholder="例）けがあり"
-               required>
+        <textarea name="name" class="form-input"
+        placeholder="例）けがあり"
+        required></textarea>
+        
                </div>
-    </div>
+    
       <input type="submit" value="送信">
     </form>
 
