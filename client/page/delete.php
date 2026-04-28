@@ -9,8 +9,8 @@
 <div class="container">
     <h2>削除</h2>
     <p>確定</p>
-    <button class="yes">Yes</button>
-    <button class="no">No</button>
+    <button class="yes">はい</button>
+    <button class="no">いいえ</button>
 </div>
 
 </body>
