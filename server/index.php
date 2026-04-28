@@ -7,17 +7,38 @@ require_once __DIR__ . "/../helpers/function.php";
 require_once __DIR__ . "/../helpers/def.php";
 require_once __DIR__ . "/../helpers/utils.php";
 
-
 //セッションスタート
 session_start();
+function access()
+{
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
+    exit;
+}
+//POSTじゃないならHomeに返す
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    access();
+}
+
+
+function kengen($dept_no,$page){//管理者なのかチェック
+    if ($dept_no === "1") {
+        header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
+        exit;
+    } else {
+        header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
+        exit;
+    }
+}
+
 
 //　IDが空じゃないか
-$emp_no = $_POST['emp_no'];
-if (empty($emp_no)) {
-    $_SESSION['emp_no_err'] = "従業員番号が空です。<br>";
+$raw_emp_no = $_POST['emp_no'] ?? "";
+if (empty($raw_emp_no)) {
+    $_SESSION['emp_no_err'] = "従業員番号が空です。";
+    access();
 }
 //　IDがint型か
-if (!is_int($emp_no)) {
+if (!ctype_digit($raw_emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号に数字以外が入っています";
 }
 
@@ -58,7 +79,6 @@ try {
     $user = $stmt->fetch();
 
     // ハッシュ化したパスワードを照合
-    $password = $user['password'];
     if (password_verify($pass, $user['password'])) {
         // セッションの保存（社員番号）
         $_SESSION['emp_no'] = $emp_no;

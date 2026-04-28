@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <link rel="stylesheet" href="dezain.css">
+    
+    <link rel="stylesheet" href="../css/dezain.css">
+
 </head>
 <body>
     

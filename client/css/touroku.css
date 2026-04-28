@@ -1,0 +1,91 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+header {
+    background: #4db8ff; 
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+
+form {
+    max-width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+
+.title h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    border-left: 6px solid #4db8ff;
+    padding-left: 10px;
+}
+
+.form {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.form label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+.form input[type="radio"] {
+    margin-left: 10px;
+    margin-right: 4px;
+}
+
+
+textarea {
+    width: 100%;
+    height: 90px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+}
+
+textarea:focus {
+    border-color: #4db8ff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(77,184,255,0.4);
+}
+
+
+input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #4db8ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+    background: #33aaff;
+}
+
+

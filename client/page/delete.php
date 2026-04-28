@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <title>Delete</title>
-    <link rel="stylesheet" href="delete.css">
+    <meta charset="UTF-8">
+    <title>削除確認</title>
+    <link rel="stylesheet" href="../css/delete.css">
 </head>
 <body>
 
 <div class="container">
-    <h2>削除</h2>
-    <p>確定</p>
-    <button class="yes">Yes</button>
-    <button class="no">No</button>
+    <div class="card">
+        
+        <h2>削除確認</h2>
+        <p>このデータを本当に削除しますか？<br>この操作は元に戻せません。</p>
+
+        <div class="buttons">
+            <a href="../../server/safety/safety_delete.php" class="yes">削除する</a>
+            <a href="safetyList.php" class="no">キャンセル</a>
+        </div>
+    </div>
 </div>
 
 </body>

@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f6f9;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    width: 340px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* title */
+h2 {
+    margin-bottom: 10px;
+}
+
+/* message */
+p {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* buttons */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons a {
+    width: 45%;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+/* delete button */
+.yes {
+    background: #ff4d4d;
+    color: white;
+}
+
+.yes:hover {
+    background: #e60000;
+}
+
+/* cancel button */
+.no {
+    background: #ddd;
+    color: #333;
+}
+
+.no:hover {
+    background: #bbb;
+}

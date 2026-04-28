@@ -15,7 +15,7 @@ unset($_SESSION["pass_err"]);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -23,8 +23,8 @@ unset($_SESSION["pass_err"]);
         <h2>ログイン</h2>
         <div>
             <label for="emp_no">社員場号：</label>
-            <input id="emp_no" name="emp_no" placeholder="＜例＞20260001">
-            <?php if (isset($emp_no_err)): ?>
+            <input id="emp_no" name="emp_no" placeholder="＜例＞20260001" type="number">
+            <?php if (!empty($emp_no_err)): ?>
                 <p><?= h($emp_no_err) ?></p>
             <?php else: ?>
                 <p></p>
@@ -33,7 +33,7 @@ unset($_SESSION["pass_err"]);
         <div>
             <label for="password">パスワード：</label>
             <input id="password" name="password" placeholder="＜例＞ 123456789" type="password">
-            <?php if (isset($pass_err)): ?>
+            <?php if (!empty($pass_err)): ?>
                 <p><?= h($pass_err) ?></p>
             <?php else: ?>
                 <p></p>

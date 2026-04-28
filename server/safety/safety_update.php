@@ -38,6 +38,7 @@ if (isset($_SESSION["emp_no"])) {
         ]);
         $pdo->commit();
     } catch (\Throwable $th) {
+        if ($pdo->inTransaction()) $pdo->rollBack();
         $_SESSION["safety_update_err"] = "編集できなかった";
         header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
         exit;

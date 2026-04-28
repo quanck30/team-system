@@ -59,3 +59,4 @@ function getPDO()
         die("データベースに接続できませんでした。エラー：" . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8'));
     }
 }
+

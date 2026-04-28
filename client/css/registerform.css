@@ -1,0 +1,112 @@
+/* Reset */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+/* Center container */
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+/* Card */
+.container {
+    width: 420px;
+    background: white;
+    padding: 30px 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Title */
+h2 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Subtitle */
+.subtitle {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Section title */
+.section-title {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #28a745;
+    border-left: 4px solid #28a745;
+    padding-left: 8px;
+}
+
+/* Form group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label */
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+/* Focus effect */
+input:focus, select:focus {
+    border-color: #28a745;
+    outline: none;
+    box-shadow: 0 0 5px rgba(40,167,69,0.3);
+}
+
+/* Button */
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Button hover */
+button:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+/* Link */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #906161;
+    font-size: 13px;
+}
+
+/* Link hover */
+a:hover {
+    text-decoration: underline;
+}
