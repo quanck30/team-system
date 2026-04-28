@@ -15,7 +15,7 @@
     <form action="../../server/register.php" method="post">
 
         <label>社員番号 (EMP_NO)</label>
-        <input name="emp_no" type="number" required>
+        <input name="emp_no" type="text" required>
 
         <label>名前 (ENAME)</label>
         <input name="ename" type="text" required>
@@ -37,10 +37,12 @@
         <input name="address" type="text" required>
 
         <label>職種 (JOB)</label>
-        <input name="job" type="text" required>
-
-        <label>給与 (SALARY)</label>
-        <input name="salary" type="number" required>
+        <select name="job" type="text" required>
+            <option value="1">システムエンジニア</option>
+            <option value="2">WEBデザイナー</option>
+            <option value="3">カスタマーサポート</option>
+            <option value="4">業務員</option>
+        </select>
 
         <label>部署番号 (DEPT_NO)</label>
         <select name="dept_no" type="number" required>
@@ -50,14 +52,8 @@
             <option value="4"></option>
         </select>
 
-        <label>管理番号 (MER_NO)</label>
-        <input name="mer_no" type="number">
-
-        <label>管理者権限 (ADMIN_ROLE)</label>
-        <select name="admin_role">
-            <option value="0">一般ユーザー</option>
-            <option value="1">管理者</option>
-        </select>
+        <label>管理番号 (MGR_NO)</label>
+        <input name="mgr_no" type="text">
 
         <label>パスワード</label>
         <input name="password" type="password" required>
