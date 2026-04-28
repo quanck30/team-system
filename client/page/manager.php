@@ -7,6 +7,8 @@
 </head>
 <body>
     <h1>>管理者用メニュー画面</h1>
-    <a href="safetyList"></a>
+    <a href="delete.php">安否情報の削除画面</a>
+    <a href="TODO">社員一覧画面</a>
+    <a href="safetyList.php">社員安否一覧画面</a>
 </body>
 </html>
