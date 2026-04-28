@@ -16,21 +16,38 @@ access('dept_no');
 //セッションスタート
 session_start();
 
-//TODO:どんな情報を扱うかフロントの人と話し合う
+//管理者とURL対策
+access($dept_no);
 
-// 社員ID 、パスワード
-$info = [];
+$password = $_POST['password'];
+$emp_no = $_POST['emp_no'];
 
-$info = [
-
-];
+if(empty($password) || empty($emp_no)){
+    $_SESSION[''] = "";
+    exit;
+}
 
 try{
     $db = getPDO();
 
+    //トランザクション開始
+    $db->beginTransaction();
+
+    //UPDATE文
+    $sql = "UPDATE EMPLOYEE SET password = :password WHERE emp_no = :emp_no";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':password', $password , );
+    $stmt->bindValue(':emp_no', $emp_no, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $db->commit();
+    //従業員番号でパスワードリセットする人を決める
+
+
 } catch(PDOException $poe){
     $_SESSION['pass_riset_err'] = $poe->getMessage();
-    nextpage("TODO");//TODO
+    nextpage("");//TODO
     exit;
 }
 

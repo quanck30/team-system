@@ -12,7 +12,7 @@
 
     <h2>社員登録</h2>
 
-    <form action="../../server/register.php" method="post">
+    <form action="../../server/emp_register.php" method="post">
 
         <label>社員番号 (EMP_NO)</label>
         <input name="emp_no" type="number" required>

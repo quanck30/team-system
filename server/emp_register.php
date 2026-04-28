@@ -63,6 +63,7 @@ if ($inputs['password'] !== $inputs['confirm_password']) {
     $errors[] = "パスワードが違います";
 }
 
+
 $_SESSION['info_null'] = $errors;
 
 if (empty($errors)) {
@@ -93,6 +94,7 @@ if (empty($errors)) {
             ':dept_no'    => $inputs['dept_no'],
             ':mgr_no'     => $inputs['mgr_no'],
             ':admin_role' => $inputs['admin_role'],
+            // 'password' => $inputs['password']//TODO:今だけ
             ':password'   => password_hash($inputs['password'], PASSWORD_DEFAULT), // ハッシュ化
         ];
 

@@ -62,7 +62,7 @@ try {
     if (password_verify($pass, $user['password'])) {
         // セッションの保存（社員番号）
         $_SESSION['emp_no'] = $emp_no;
-        $_SESSION['dept_no'] = $dept_no;
+        $_SESSION['dept_no'] = $dept_no;//TODO:要相談
 
         //ログインしたユーザーの全情報をセッションに保存
         $_SESSION['user'] = $user;
