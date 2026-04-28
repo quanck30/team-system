@@ -50,13 +50,7 @@
     </form>
 
     </div>
-
-
-
-
-
-
-
+    
     <!-- <a href="safetyList.php">社員安否一覧画面</a> -->
 </body>
 
