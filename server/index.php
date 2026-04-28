@@ -2,6 +2,8 @@
 //ログイン画面のサーバー側
 //マサキカイリ
 // Home.phpからもらってきたログイン情報をここで処理してログイン情報を渡す
+
+require_once __DIR__ . "/../helpers/function.php";
 require_once __DIR__ . "/../helpers/def.php";
 require_once __DIR__ . "/../helpers/utils.php";
 
@@ -38,15 +40,23 @@ if (empty($raw_emp_no)) {
 //　IDがint型か
 if (!ctype_digit($raw_emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号に数字以外が入っています";
-    access();
 }
 
-$emp_no = (int) $raw_emp_no;
-//　パスワードは空じゃないか
-$pass = filter_input(INPUT_POST, "password");
+// パスワードは空じゃないか
+$pass = $_POST['password'];
 if (empty($pass)) {
-    $_SESSION['pass_err'] = "パスワードが空です。";
-    access();
+    $_SESSION['pass_err'] = "パスワードが空です。 <br>";
+}
+
+// パスワードが8文字以上か
+if(strlen(trim($pass)) <= 7){
+$_SESSION['pass_err'] = "パスワードを8文字以上に設定してください";
+}
+
+//エラーメッセージがあったらHomeに移動
+if (!empty($_SESSION['emp_no_err']) || !empty($_SESSION['pass_err'])){
+    homeidou();
+    exit;
 }
 
 // パスワードをハッシュ化
@@ -70,23 +80,32 @@ try {
 
     // ハッシュ化したパスワードを照合
     if (password_verify($pass, $user['password'])) {
+        // セッションの保存（社員番号）
+        $_SESSION['emp_no'] = $emp_no;
+        $_SESSION['dept_no'] = $dept_no;//TODO:要相談
+
+        //ログインしたユーザーの全情報をセッションに保存
+        $_SESSION['user'] = $user;
 
         //dept_no(部署)が１なら管理人の画面に遷移
-        $page = "manager";
         $dept_no = $user['DEPT_NO'];
-        kengen($dept_no,$page);
-
+        if ($dept_no === "1") {
+            // $page = "manager";
+            nextpage("manager");
+        } else {
+            //安否登録画面に遷移
+            nextpage("touroku");
+        }
         //  PDOオブジェクトを破棄
         $stmt = null;
         $db = null;
-
-
-        //パスワードが間違ってたらHomeに遷移
+    //パスワードが間違ってたらHomeに遷移
     } else {
         $_SESSION["pass_err"] = "パスワードが間違っている";
-        access();
+        homeidou();
     }
+    exit;
 } catch (PDOException $poe) {
-    access();
-    // exit("DBエラー" . $poe->getMessage());//開発時だけメッセージ表示
+    homeidou();
+    exit("DBエラー" . $poe->getMessage());//開発時だけメッセージ表示
 }

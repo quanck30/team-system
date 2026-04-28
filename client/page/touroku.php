@@ -50,16 +50,11 @@
                </div>
     
       <input type="submit" value="送信">
+      <a href="./Home.php">戻る</a>
     </form>
 
     </div>
     
-    
-      
-      
-
-
-
     <!-- <a href="safetyList.php">社員安否一覧画面</a> -->
 </body>
 </html>
