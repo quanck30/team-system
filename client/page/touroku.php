@@ -32,7 +32,13 @@
             <input type="radio" name="yesno" value="2">在宅のみ可能
             <input type="radio" name="yesno" value="3">不可
         </div>
-
+        <div class="form">
+            <label>現在位置はどこですか？</label>
+            <input type="text"
+            placeholder="例）大阪駅"
+            >
+        </div>
+       
         コメント
         <div class="form-group horizpntal-layout">
             <label class="form-label">
