@@ -44,6 +44,7 @@
                </div>
     
       <input type="submit" value="送信">
+      <a href="./Home.php">戻る</a>
     </form>
 
     </div>

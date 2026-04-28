@@ -12,7 +12,7 @@
 
     <h2>社員登録</h2>
 
-    <form action="../../server/register.php" method="post">
+    <form action="../../server/emp_register.php" method="post">
 
         <label>社員番号 (EMP_NO)</label>
         <input name="emp_no" type="number" required>
@@ -50,8 +50,8 @@
             <option value="4"></option>
         </select>
 
-        <label>管理番号 (MER_NO)</label>
-        <input name="mer_no" type="number">
+        <label>管理番号 (MGR_NO)</label>
+        <input name="mgr_no" type="number">
 
         <label>管理者権限 (ADMIN_ROLE)</label>
         <select name="admin_role">
