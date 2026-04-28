@@ -1,0 +1,112 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: #4db8ff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+
+h2 {
+    display: inline-block;
+    margin: 20px 0 10px 20px;
+    font-size: 1.3rem;
+    border-left: 6px solid #4db8ff;
+    padding-left: 10px;
+}
+
+.back {
+    display: inline-block;
+    margin-left: 20px;
+    padding: 8px 14px;
+    background: #4db8ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.back:hover {
+    background: #33aaff;
+}
+
+
+table {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+thead th {
+    background: #e9f6ff;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-bottom: 2px solid #d0eaff;
+    text-align: left;
+}
+
+tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+tbody tr:hover {
+    background: #eaf6ff;
+}
+
+
+tbody a {
+    color: #0078d4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+tbody a:hover {
+    text-decoration: underline;
+}
+
+
+.bottom-links {
+    width: 90%;
+    max-width: 1000px;
+    margin: 15px auto;
+    text-align: right;
+}
+
+.bottom-links a {
+    margin-left: 15px;
+    color: #0078d4;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.bottom-links a:hover {
+    text-decoration: underline;
+}
+
+

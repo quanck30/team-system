@@ -1,5 +1,89 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+} */
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
+
+
+form {
+    width: 350px;
+    background: #fff;
+    padding: 30px 28px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    border-left: 6px solid #4db8ff;
+    padding-left: 10px;
+}
+
+
+form div {
+    margin-bottom: 18px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+}
+
+input[type="number"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #4db8ff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(77,184,255,0.4);
+}
+
+
+p {
+    color: red;
+    font-size: 0.85rem;
+    margin: 4px 0 0;
+    height: 16px; /* レイアウトがズレないように固定 */
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #4db8ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #33aaff;
+}
+
+
