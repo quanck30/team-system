@@ -13,7 +13,7 @@
       <h2>社員登録</h2>
       <p class="subtitle">新しい社員情報を入力してください</p>
 
-    <form action="../../server/register.php" method="post">
+    <form action="../../server/emp_register.php" method="post">
 
         <div class="form-group">
             <label>社員番号</label>
