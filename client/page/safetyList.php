@@ -14,16 +14,22 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社員安否一覧画面</title>
-    <link rel="stylesheet" href="./../css/index.css">
-    <link rel="stylesheet" href="./../css/safety.css">
+    <!-- <link rel="stylesheet" href="./../css/index.css">
+    <link rel="stylesheet" href="./../css/safety.css"> -->
+    <link rel="stylesheet" href="./../css/safetyList.css">
+
 </head>
 
 <body>
-    <div>
+    <header>
+        <div>
         <h1>社員安否一覧画面</h1>
-        <a class="back" href="">安否登録</a>
     </div>
-    <h2>安否一覧表示</h2>
+    </header>
+
+    
+    
+    <h2>安否一覧表示</h2><a class="back" href="">安否登録</a>
 
     <section class="safety-display">
         <table>
@@ -73,9 +79,10 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
                     <td>特にない</td>
                     <td><a href="./safetydetail.php">詳細</a></td>
                 </tr>
+                
             </tbody>
         </table>
-        <?php echo $emp_no  ?><br>
+       <!-- <?php echo $emp_no  ?><br>  -->
     </section>
 </body>
 
