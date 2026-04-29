@@ -13,7 +13,9 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社員安否一覧画面</title>
+    <title>社員一覧画面</title>
+    <!-- <link rel="stylesheet" href="./../css/index.css">
+    <link rel="stylesheet" href="./../css/safety.css"> -->
     <link rel="stylesheet" href="./../css/safetyList.css">
 
 </head>
@@ -21,13 +23,13 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
 <body>
     <header>
         <div>
-        <h1>社員安否一覧画面</h1>
+        <h1>社員一覧画面</h1>
     </div>
     </header>
 
     
     
-    <h2>安否一覧表示</h2><a class="back" href="./touroku.php">安否登録</a>
+    <h2>社員一覧表示</h2>
 
     <section class="safety-display">
         <table>
@@ -35,8 +37,7 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
                 <tr>
                     <th>社員番号</th>
                     <th>名前</th>
-                    <th>安否状態</th>
-                    <th>コメント</th>
+                    <th>部署</th>
                     <th></th>
                 </tr>
             </thead>
@@ -52,29 +53,25 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
-                    <td>安全</td>
-                    <td>特にない</td>
+                    <td>大阪市店</td>
                     <td><a href="./safetydetail.php">詳細</a></td>
                 </tr>
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
-                    <td>安全</td>
-                    <td>特にない</td>
+                    <td>大阪市店</td>
                     <td><a href="./safetydetail.php">詳細</a></td>
                 </tr>
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
-                    <td>安全</td>
-                    <td>特にない</td>
+                    <td>大阪市店</td>
                     <td><a href="./safetydetail.php">詳細</a></td>
                 </tr>
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
-                    <td>安全</td>
-                    <td>特にない</td>
+                    <td>大阪市店</td>
                     <td><a href="./safetydetail.php">詳細</a></td>
                 </tr>
                 

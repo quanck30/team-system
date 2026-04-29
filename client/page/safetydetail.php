@@ -15,9 +15,15 @@
     <!-- 一覧表示 -->
     <table>
         <tr>
-            <th>ID</th>
+            <th>社員番号</th>
             <th>名前</th>
-            <th>メール</th>
+            <th>部署</th>
+            <th>コメント</th>
+            <th>現在地
+                （入力時）
+            </th>
+
+            
         </tr>
         <?php if (!empty($rows)): ?>
         <?php foreach ($rows as $row): ?>
