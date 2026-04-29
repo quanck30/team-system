@@ -9,10 +9,13 @@ function homeidou()
     exit;
 };
 
+//ログイン状態じゃなかったらはじく処理
+
+
 //URL直打ちを対策
 function access($dept_no)
 {
-    if($_SERVER["REQUEST_METHOD"] !== "POST" || isset($_SERVER["REQUEST_METHOD"]) || $dept_no !== "1") {
+    if($_SERVER["REQUEST_METHOD"] !== "POST" || isset($_SERVER["REQUEST_METHOD"]) || $dept_no !== "1" || $_SESSION['logged_in'] !== 1) {
         homeidou();
     }
 };
