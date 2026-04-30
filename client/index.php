@@ -23,7 +23,7 @@ unset($_SESSION["pass_err"]);
         <h2>ログイン</h2>
         <div>
             <label for="emp_no">社員場号：</label>
-            <input id="emp_no" name="emp_no" placeholder="＜例＞20260001" type="number">
+            <input id="emp_no" name="emp_no" placeholder="＜例＞20260001" type="text">
             <?php if (!empty($emp_no_err)): ?>
                 <p><?= h($emp_no_err) ?></p>
             <?php else: ?>

@@ -5,7 +5,7 @@
 -- DROP TABLE
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS report;
+DROP TABLE IF EXISTS safety;
 DROP TABLE IF EXISTS employee;
 DROP TABLE IF EXISTS department;
 DROP TABLE IF EXISTS job;
@@ -47,13 +47,13 @@ CREATE TABLE IF NOT EXISTS employee (
 );
 
 CREATE TABLE IF NOT EXISTS safety (
-    rep_id INT AUTO_INCREMENT PRIMARY KEY,
+    safety_id INT AUTO_INCREMENT PRIMARY KEY,
     emp_no VARCHAR(5) ,
     status_id INT NOT NULL,
     comment VARCHAR(255) ,
     current_location VARCHAR(255),
     can_work_no INT NOT NULL,
-    create_at DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    create_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
     FOREIGN KEY (emp_no) REFERENCES employee(emp_no),
     FOREIGN KEY (status_id) REFERENCES status(status_id),
     FOREIGN KEY (can_work_no) REFERENCES canwork(can_work_no)
