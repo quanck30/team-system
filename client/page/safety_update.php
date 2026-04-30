@@ -8,7 +8,6 @@ require_once __DIR__ . "/../../helpers/def.php";
 session_start();
 $emp_no = $_SESSION["emp_no"] ?? "E0001";
 $safety_id = filter_input(INPUT_GET, "safety_id", FILTER_VALIDATE_INT);
-echo $safety_id;
 // if (empty($safety_id) || empty($emp_no)) {
 //     header("Location: " . TEAM_SYSTEM . "/client/index.php");
 // }
