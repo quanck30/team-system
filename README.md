@@ -105,4 +105,15 @@
 4. GitHubを開いて「Pull Request」機能を使って、リクエストする
 ---
 
+
+### データベースの作成
+1. ルートに入る
+```mysql -u root -p```
+
+2. データベースの作成
+```CREATE DATABASE team_system; ```
+
+3.　ユーザー権限設定
+```GRANT ALL ON team_system.* TO dbuser; ```
+
 ご不明な点があれば、Teamsに連絡してください。
