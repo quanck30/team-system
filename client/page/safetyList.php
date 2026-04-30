@@ -18,8 +18,6 @@ $all_safety = get_all_safety();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社員安否一覧画面</title>
-    <!-- <link rel="stylesheet" href="./../css/index.css">
-    <link rel="stylesheet" href="./../css/safety.css"> -->
     <link rel="stylesheet" href="./../css/safetyList.css">
 
 </head>
@@ -31,9 +29,9 @@ $all_safety = get_all_safety();
         </div>
     </header>
 
-
-
-    <h2>安否一覧表示</h2><a class="back" href="">安否登録</a>
+    
+    
+    <h2>安否一覧表示</h2><a class="back" href="./touroku.php">安否登録</a>
 
     <section class="safety-display">
         <table>
