@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理者画面</title>
-    <link rel="stylesheet" href="./../css/kanrisha.css">
-    
+    <link rel="stylesheet" href="../css/kanrisha.css">
 </head>
 <body>
     <div class="container"> 
@@ -20,12 +19,12 @@
             <p>社員の安否状況を確認</p>
         </a>
         <a href="registerform.php" class="card">
+            <h2>社員登録</h2>
+            <p>社員情報を登録</p>
+        </a>
+        <a href="touroku.php" class="card">
             <h2>安否登録</h2>
             <p>安否情報を登録</p>
-        </a>
-        <a href="delete.php" class="card">
-            <h2>安否削除</h2>
-            <p>不要な安否情報を削除</p>
         </a>
        <div class="logout" class="card">
             <a href="./../index.php">ログアウト</a>    
