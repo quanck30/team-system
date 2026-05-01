@@ -3,8 +3,13 @@
 // 2026/05/01
 require_once __DIR__ . "/../../server/safety/safety_show.php";
 require_once __DIR__ . "/../../helpers/utils.php";
+require_once __DIR__ . "/../../helpers/def.php";
 
 $safety_id = filter_input(INPUT_GET, 'safety_id', FILTER_VALIDATE_INT);
+if (empty($safety_id) || $_SERVER["REQUEST_METHOD"] !== "GET") {
+    header("Location: " . TEAM_SYSTEM . "/client/page/safetyList.php");
+    exit;
+}
 $safety = get_safety($safety_id);
 
 ?>
@@ -52,7 +57,10 @@ $safety = get_safety($safety_id);
             </tr>
         <?php endif; ?>
     </table>
-
+ <div class="bottom-links">
+        <a href="./Home.php">戻る</a>
+        <a href="index.php">ログアウト</a>
+</div>
 </body>
 
 </html>

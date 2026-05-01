@@ -3,16 +3,26 @@
 // 2026・04・30
 require_once __DIR__ . "/../../server/safety/safety_show.php";
 require_once __DIR__ . "/../../helpers/def.php";
+require_once __DIR__ . "/../../helpers/function.php";
 
 
 session_start();
-$emp_no = $_SESSION["emp_no"] ?? "E0001";
+$emp_no = $_SESSION["emp_no"] ?? null;
 $safety_id = filter_input(INPUT_GET, "safety_id", FILTER_VALIDATE_INT);
-// if (empty($safety_id) || empty($emp_no)) {
-//     header("Location: " . TEAM_SYSTEM . "/client/index.php");
-// }
-$safety = get_safety($emp_no);
-
+if (empty($emp_no) || empty($safety_id)) {
+    header("Location: " . TEAM_SYSTEM . "/client");
+    exit;
+}
+$safety = get_safety($safety_id);
+if (!$safety) {
+    header("Location: " . TEAM_SYSTEM . "/client/page/safetyList.php");
+    exit;
+}
+if ($safety["emp_no"] != $emp_no) {
+    $_SESSION["update_access_err"] = "更新権限が持ってない";
+    header("Location: " . TEAM_SYSTEM . "/client/page/safetyList.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -66,12 +76,13 @@ $safety = get_safety($emp_no);
         </div>
 
         <input type="submit">
-        <a href="./Home.php">戻る</a>
+        <a href="./safetyList.php">戻る</a>
     </form>
 
     </div>
 
     <!-- <a href="safetyList.php">社員安否一覧画面</a> -->
+
 </body>
 
 </html>

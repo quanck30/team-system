@@ -21,14 +21,14 @@ try{
     $pdo = getPDO();
 
     //トランザクション開始
-    $db->beginTransaction();
+    $pdo->beginTransaction();
 
     $sql = "DELETE FROM EMPLOYEE WHERE emp_no = :emp_no";
-    $stmt = $db->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':emp_no' , $emp_no , PDO::PARAM_STR);
     $stmt->execute();
 
-    $db->commit();
+    $pdo->commit();
 
 } catch(PDOException $poe){
     $_SESSION['safety_info_err'] = $poe->getMessage();
