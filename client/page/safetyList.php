@@ -20,7 +20,6 @@ $all_safety = get_all_safety();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社員安否一覧画面</title>
     <link rel="stylesheet" href="./../css/safetyList.css">
-
 </head>
 
 <body>
@@ -30,9 +29,8 @@ $all_safety = get_all_safety();
         </div>
     </header>
 
-
-
-    <h2>安否一覧表示</h2><a class="back" href="./touroku.php">安否登録</a>
+    <h2>安否一覧表示</h2>
+    <a class="back" href="./touroku.php">安否登録</a>
 
     <section class="safety-display">
         <table>
@@ -42,10 +40,11 @@ $all_safety = get_all_safety();
                     <th>名前</th>
                     <th>安否状態</th>
                     <th>出社状態</th>
-                    <th></th>
+                    <th>編集</th>
                     <?php if ($dept_no === 1): ?>
-                        <th></th>
+                        <th>削除</th>
                     <?php endif ?>
+                    <th>削除</th>
                 </tr>
             </thead>
 
@@ -63,11 +62,22 @@ $all_safety = get_all_safety();
                     </tr>
                 <?php endforeach ?>
 
+                        <td>
+                        <div class="delete">
+                            <a class="delete-btn" href="<?= "./delete.php?safety_id=" . $safety["safety_id"] ?>">削除</a>
+                        </div>
+</td>
 
+                    </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
     </section>
 
+    <div class="bottom-links">
+        <a href="./touroku.php">戻る</a>
+        <a href="./index.php">ログアウト</a>
+    </div>
 
     <script src="./../js/safetyList.js"></script>
     <script>

@@ -14,6 +14,7 @@
     <header>
         <h1>登録画面</h1>
     </header>
+    
     <form action="./../../server/safety/safety_create.php" method="post">
 
         <div class="title">
@@ -40,18 +41,21 @@
 
         コメント
         <div class="form-group horizpntal-layout">
-            <label class="form-label">
-                <div class="form-row">
-
-            </label>
-            <textarea name="comment" class="form-input"
-                placeholder="例）けがあり"
-                required></textarea>
-
-        </div>
-
-        <input type="submit" value="送信">
-        <a href="./safetyList.php">安否情報一覧</a>
+        <label class="form-label">
+        <div class="form-row">
+        
+        </label>
+        <textarea name="name" class="form-input"
+        placeholder="例）けがあり"
+        required></textarea>
+        
+               </div>
+    
+      <input type="submit" value="送信">
+    <div class="bottom-links">
+        <a href="./Home.php">戻る</a>
+        <a href="index.php">ログアウト</a>
+    </div>
     </form>
 
     </div>

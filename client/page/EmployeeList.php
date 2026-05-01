@@ -54,31 +54,33 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
                     <td>20260304</td>
                     <td>佐藤太郎</td>
                     <td>大阪市店</td>
-                    <td><a href="./safetydetail.php">詳細</a></td>
+
                 </tr>
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
                     <td>大阪市店</td>
-                    <td><a href="./safetydetail.php">詳細</a></td>
+
                 </tr>
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
                     <td>大阪市店</td>
-                    <td><a href="./safetydetail.php">詳細</a></td>
+
                 </tr>
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
                     <td>大阪市店</td>
-                    <td><a href="./safetydetail.php">詳細</a></td>
+
                 </tr>
                 
             </tbody>
+           
         </table>
        <!-- <?php echo $emp_no  ?><br>  -->
     </section>
+     <a href="./Home.php">戻る</a><a href="index.php">ログアウト</a>
 </body>
 
 </html>
