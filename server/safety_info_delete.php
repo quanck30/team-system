@@ -3,12 +3,12 @@
 //delete
 
 require_once __DIR__ . "/../helpers/function.php";
-require_once __DIR__ . "/../helpers/def.php";
+require_once __DIR__ . "/../helpers/def.php"; //多分def.phpいらない
 require_once __DIR__ . "/../helpers/utils.php";
 
-access('dept_no');
 //セッションスタート
 session_start();
+
 access($_SESSION['dept_no']);
 
 $emp_no = $_POST['emp_no'] ?? "";

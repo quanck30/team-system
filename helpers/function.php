@@ -5,26 +5,18 @@
 function homeidou()
 {
     //Home.phpに遷移
-    header("Location: " . TEAM_SYSTEM . "/client/Home.php");
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
     exit;
 };
+
 
 //URL直打ちを対策
 function access($dept_no)
 {
-    if($_SERVER["REQUEST_METHOD"] !== "POST" || isset($_SERVER["REQUEST_METHOD"]) || $dept_no !== "1") {
+    if($_SERVER["REQUEST_METHOD"] !== "POST" || isset($_SERVER["REQUEST_METHOD"]) || $dept_no !== "1" || $_SESSION['logged_in'] !== 1) {
         homeidou();
     }
 };
-
-
-//管理者なのかチェック
-// function kengen($dept_no)
-// { 
-//     if ($dept_no !== "1") {
-//         homeidou();
-//     }
-// }
 
 //次のページに遷移
 function nextpage($page) 
