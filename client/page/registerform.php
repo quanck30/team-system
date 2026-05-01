@@ -8,10 +8,12 @@
 </head>
 
 <body>
+
+<div class="wrapper">
 <div class="container">
 
-      <h2>社員登録</h2>
-      <p class="subtitle">新しい社員情報を入力してください</p>
+    <h2>社員登録</h2>
+    <p class="subtitle">新しい社員情報を入力してください</p>
 
     <form action="../../server/emp_register.php" method="post">
 
@@ -22,16 +24,16 @@
 
         <div class="form-group">
             <label>名前 (ENAME)</label>
-            <input name="ename" type="text" placeholder="例:　山田　blahblah" required>
+            <input name="ename" type="text" placeholder="例: 山田 太郎" required>
         </div>
 
-        <div class="form-group">
-            <label>生年月日 (BIRTHDAY)</label>
+        <div class                                                                      ="form-group">
+            <label>生年月日</label>
             <input name="birthday" type="date" required>
         </div>
 
         <div class="form-group">
-        <label>性別 (SEX)</label>
+            <label>性別</label>
             <select name="sex" required>
                 <option value="">選択してください</option>
                 <option value="M">男性</option>
@@ -40,18 +42,18 @@
         </div>
 
         <div class="form-group">
-            <label>電話番号 (TEL)</label>
+            <label>電話番号</label>
             <input name="tel" type="text" required>
         </div>
 
         <div class="form-group">
-            <label>住所 (ADDRESS)</label>
+            <label>住所</label>
             <input name="address" type="text" required>
         </div>
 
         <div class="form-group">
-        <label>職種 (JOB)</label>
-            <select name="job" type="text" required>
+            <label>職種</label>
+            <select name="job" required>
                 <option value="1">システムエンジニア</option>
                 <option value="2">WEBデザイナー</option>
                 <option value="3">カスタマーサポート</option>
@@ -60,8 +62,8 @@
         </div>
 
         <div class="form-group">
-        <label>部署番号 (DEPT_NO)</label>
-            <select name="dept_no" type="text" required>
+            <label>部署番号</label>
+            <select name="dept_no" required>
                 <option value="1">営業</option>
                 <option value="2">人事</option>
                 <option value="3">マーケティング</option>
@@ -70,8 +72,13 @@
         </div>
 
         <div class="form-group">
-            <label>管理番号 (MGR_NO)</label>
-            <input name="mgr_no" type="text">
+            <label>管理番号</label>
+            <select name="mgr_no" required>
+                <option value="1">E001</option>
+                <option value="2">E002</option>
+                <option value="3">E003</option>
+                <option value="4">E004</option>
+            </select>
         </div>
 
         <div class="form-group">
@@ -90,6 +97,7 @@
 
     <p><a href="../index.php">ログインに戻る</a></p>
 
+</div>
 </div>
 </body>
 </html>
