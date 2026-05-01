@@ -64,14 +64,6 @@ $all_safety = get_all_safety();
                     </tr>
                 <?php endforeach ?>
 
-                        <td>
-                        <div class="delete">
-                            <a class="delete-btn" href="<?= "./delete.php?safety_id=" . $safety["safety_id"] ?>">削除</a>
-                        </div>
-</td>
-
-                    </tr>
-                <?php endforeach ?>
             </tbody>
         </table>
     </section>
