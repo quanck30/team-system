@@ -14,7 +14,7 @@
     <header>
         <h1>登録画面</h1>
     </header>
-    <form action="safetyList.php" method="post">
+    <form action="./../../server/safety/safety_create.php" method="post">
 
         <div class="title">
             <h2>安否確認</h2>
@@ -28,31 +28,31 @@
         </div>
         <div class="form">
             <label>出社は可能ですか？</label>
-            <input type="radio" name="yesno" value="1">可能
-            <input type="radio" name="yesno" value="2">在宅のみ可能
-            <input type="radio" name="yesno" value="3">不可
+            <input type="radio" name="available" value="1">可能
+            <input type="radio" name="available" value="2">在宅のみ可能
+            <input type="radio" name="available" value="3">不可
         </div>
         <div class="form">
             <label>現在位置はどこですか？</label>
-            <input type="text"
+            <input type="text" name="location"
             placeholder="例）大阪駅"
             >
         </div>
        
         コメント
         <div class="form-group horizpntal-layout">
-            <label class="form-label">
-                <div class="form-row">
-
-            </label>
-            <textarea name="name" class="form-input"
-                placeholder="例）けがあり"
-                required></textarea>
-
-        </div>
-
-        <input type="submit" value="送信">
-        <a href="./Home.php">戻る</a>
+        <label class="form-label">
+        <div class="form-row">
+        
+        </label>
+        <textarea name="name" class="form-input"
+        placeholder="例）けがあり"
+        required></textarea>
+        
+               </div>
+    
+      <input type="submit" value="送信">
+      <a href="./Home.php">戻る</a>
     </form>
 
     </div>
