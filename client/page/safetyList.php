@@ -1,14 +1,14 @@
 <?php
 // 安否一覧表示画面
 // 2026・04・21
+session_start();
 require_once __DIR__ . "/../../server/safety/safety_show.php";
 require_once __DIR__ . "/../../helpers/def.php";
 require_once __DIR__ . "/../../helpers/utils.php";
-// if (empty($_SESSION["emp_no"])) {
-//     header("Location: " . TEAM_SYSTEM . "/client/index.php");
-//     exit;
-// };
+require_once __DIR__ . "/../../helpers/function.php";
 $dept_no = $_SESSION["dept_no"] ?? 0;
+$update_access_err = $_SESSION["update_access_err"] ?? "";
+unset($_SESSION["update_access_err"]);
 $all_safety = get_all_safety();
 ?>
 
@@ -43,7 +43,6 @@ $all_safety = get_all_safety();
                     <th>安否状態</th>
                     <th>出社状態</th>
                     <th></th>
-                    <th></th>
                     <?php if ($dept_no === 1): ?>
                         <th></th>
                     <?php endif ?>
@@ -52,16 +51,15 @@ $all_safety = get_all_safety();
 
             <tbody>
                 <?php foreach ($all_safety as $safety): ?>
-                    <tr class="clickable-row" data-href="./safetydetail.php?safety_id=<?= h($safety["safety_id"]) ?>">
+                    <tr class="clickable-row" role="link" data-href="./safetydetail.php?safety_id=<?= h($safety["safety_id"]) ?>">
                         <td><?= h($safety["emp_no"]) ?></td>
                         <td><?= h($safety["ename"]) ?></td>
                         <td><?= h($safety["status"]) ?></td>
                         <td><?= h($safety["can_work"]) ?></td>
-                        <td><a href=<?= "./safety_update.php?safety_id=" . $safety["safety_id"] ?>>編集</a></td>
+                        <td><a href=<?= "./safety_update.php?safety_id=" .h($safety["safety_id"]) ?>>編集</a></td>
                         <?php if ($dept_no === 1): ?>
-                            <td><a href="./safetydetail.php?">削除</a></td>
+                            <td><a href=<?= "./delete.php?safety_id=" .h($safety["safety_id"]) ?>>削除</a></td>
                         <?php endif ?>
-                        <td><a href=<?= "./delete.php?safety_id=" . $safety["safety_id"] ?>>削除</a></td>
                     </tr>
                 <?php endforeach ?>
 
@@ -72,6 +70,12 @@ $all_safety = get_all_safety();
 
 
     <script src="./../js/safetyList.js"></script>
+    <script>
+        const updateAccessErr = <?= json_encode($update_access_err) ?>;
+        if (updateAccessErr) {
+            alert(updateAccessErr);
+        }
+    </script>
 </body>
 
 </html>

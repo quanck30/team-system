@@ -11,9 +11,9 @@ function homeidou()
 
 
 //URL直打ちを対策
-function access($dept_no)
+function access()
 {
-    if($_SERVER["REQUEST_METHOD"] !== "POST" || isset($_SERVER["REQUEST_METHOD"]) || $dept_no !== "1" || $_SESSION['logged_in'] !== 1) {
+    if($_SERVER["REQUEST_METHOD"] !== "POST" || isset($_SERVER["REQUEST_METHOD"]) || $_SESSION["dept_no"] !== "1" || $_SESSION['logged_in'] !== 1) {
         homeidou();
     }
 };
