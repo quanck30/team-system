@@ -107,9 +107,15 @@ $managers = [
 ];
 
 $safeties = [
-    ['emp_no' => 'E0001', 'status_id' => 1, 'comment' => '家族全員無事です。避難所にいます。', 'location' => '代々木公園避難所', 'can_work_no' => 1],
-    ['emp_no' => 'E0002', 'status_id' => 2, 'comment' => '足に軽い怪我をしましたが、歩けます。', 'location' => '自宅', 'can_work_no' => 2],
-    ['emp_no' => 'E0003', 'status_id' => 1, 'comment' => '外出中でしたが、怪我はありません。', 'location' => '品川駅付近', 'can_work_no' => 3],
+    ['emp_no' => 'E0001', 'status_id' => 1, 'comment' => '家族全員無事です。避難所にいます。', 'location' => '代々木公園避難所', 'can_work_no' => 1, 'create_at' => '2026-04-30 10:43:07'],
+    ['emp_no' => 'E0002', 'status_id' => 2, 'comment' => '足に軽い怪我をしましたが、歩けます。', 'location' => '自宅', 'can_work_no' => 2, 'create_at' => '2026-04-30 10:43:07'],
+    ['emp_no' => 'E0003', 'status_id' => 1, 'comment' => '外出中でしたが、怪我はありません。', 'location' => '品川駅付近', 'can_work_no' => 3, 'create_at' => '2026-04-30 10:43:07'],
+    ['emp_no' => 'E0004', 'status_id' => 1, 'comment' => '会社にいます。備蓄食料を確認中です。', 'location' => '本社ビル3F', 'can_work_no' => 1, 'create_at' => '2026-04-30 11:15:20'],
+    ['emp_no' => 'E0005', 'status_id' => 3, 'comment' => '家財が倒れて動けません。助けを待っています。', 'location' => '世田谷区アパート', 'can_work_no' => 3, 'create_at' => '2026-04-30 11:20:45'],
+    ['emp_no' => 'E0006', 'status_id' => 2, 'comment' => '電車の中で立ち往生しています。復旧待ち。', 'location' => '新宿駅構内', 'can_work_no' => 2, 'create_at' => '2026-04-30 11:30:10'],
+    ['emp_no' => 'E0007', 'status_id' => 1, 'comment' => '近所の消火活動を手伝っています。午後から在宅可。', 'location' => '実家(中野区)', 'can_work_no' => 2, 'create_at' => '2026-04-30 11:45:00'],
+    ['emp_no' => 'E0008', 'status_id' => 4, 'comment' => '怪我人がいます。至急救急車を呼びたいが繋がりません。', 'location' => '渋谷交差点付近', 'can_work_no' => 3, 'create_at' => '2026-04-30 11:55:12'],
+    ['emp_no' => 'E0009', 'status_id' => 1, 'comment' => '通信環境が悪いため、取り急ぎ無事のみ報告します。', 'location' => '不明(移動中)', 'can_work_no' => 1, 'create_at' => '2026-04-30 12:05:30'],
 ];
 $pdo = getPDO();
 try {
