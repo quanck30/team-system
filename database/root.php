@@ -141,7 +141,7 @@ try {
             ':address'  => $emp['address'],
             ':job_no'   => $emp['job_no'],
             ':dept_no'  => $emp['dept_no'],
-            ':password' => password_hash("123456", PASSWORD_DEFAULT)
+            ':password' => password_hash("12345678", PASSWORD_DEFAULT)
         ]);
     }
 

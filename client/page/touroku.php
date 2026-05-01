@@ -36,10 +36,9 @@
         <div class="form">
             <label>現在位置はどこですか？</label>
             <input type="text" name="location"
-            placeholder="例）大阪駅"
-            >
+                placeholder="例）大阪駅">
         </div>
-       
+
         コメント
         <div class="form-group horizpntal-layout">
         <label class="form-label">
@@ -60,7 +59,7 @@
     </form>
 
     </div>
-    
+
     <!-- <a href="safetyList.php">社員安否一覧画面</a> -->
 </body>
 
