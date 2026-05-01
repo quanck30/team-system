@@ -9,33 +9,16 @@ require_once __DIR__ . "/../helpers/utils.php";
 
 //セッションスタート
 session_start();
-function access()
-{
-    header("Location: " . TEAM_SYSTEM . "/client/index.php");
+
+if($_SERVER['REQUEST_METHOD'] !== "POST"){
     exit;
 }
-//POSTじゃないならHomeに返す
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    access();
-}
-
-
-function kengen($dept_no,$page){//管理者なのかチェック
-    if ($dept_no === "1") {
-        header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
-        exit;
-    } else {
-        header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
-        exit;
-    }
-}
-
 
 //　IDが空じゃないか
 $raw_emp_no = $_POST['emp_no'] ?? "";
 if (empty($raw_emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号が空です。";
-    access();
+    // access($_SESSION['dept_no']);//まだセッションにdept_noなどが格納されていない
 }
 //　IDがint型か
 if (!ctype_digit($raw_emp_no)) {
@@ -59,9 +42,6 @@ if (!empty($_SESSION['emp_no_err']) || !empty($_SESSION['pass_err'])){
     exit;
 }
 
-// パスワードをハッシュ化
-// $hashpass = password_verify($pass , PASSWORD_DEFAULT);
-
 
 try {
     // データべースと接続
@@ -81,17 +61,17 @@ try {
     // ハッシュ化したパスワードを照合
     if (password_verify($pass, $user['password'])) {
         // セッションの保存（社員番号）
-        $_SESSION['emp_no'] = $emp_no;
-        $_SESSION['dept_no'] = $dept_no;//TODO:要相談
+        $_SESSION['emp_no'] = $user['emp_no'];
+        $_SESSION['dept_no'] = $user['dept_no'];
 
-        //ログインしたユーザーの全情報をセッションに保存
-        $_SESSION['user'] = $user;
+        //ログイン済みを 1 それ以外は未定義
+        $_SESSION['logged_in'] = 1;
 
         //dept_no(部署)が１なら管理人の画面に遷移
         $dept_no = $user['DEPT_NO'];
         if ($dept_no === "1") {
             // $page = "manager";
-            nextpage("manager");
+            nextpage("kanrisha");
         } else {
             //安否登録画面に遷移
             nextpage("touroku");

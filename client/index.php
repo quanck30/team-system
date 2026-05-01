@@ -39,7 +39,7 @@ unset($_SESSION["pass_err"]);
                 <p></p>
             <?php endif; ?>
         </div>
-        <button type="submit">ローグイン</button>
+        <button type="submit">ログイン</button>
     </form>
 </body>
 

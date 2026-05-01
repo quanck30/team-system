@@ -10,7 +10,7 @@ function get_all_safety(): array
 
     try {
         $pdo = getPDO();
-        $select = "SELECT Saf.safety_id, E.emp_no, E.ename, S.status, C.can_work, Saf.comment, Saf.current_location, DATE_FORMAT(create_at, '%Y年%m月%d日') AS day, DATE_FORMAT(create_at, '%H:%i') AS time 
+        $select = "SELECT Saf.safety_id, E.emp_no, E.ename, S.status, C.can_work
                     FROM safety Saf 
                     JOIN employee E ON  Saf.emp_no = E.emp_no 
                     JOIN status S ON Saf.status_id = S.status_id
@@ -27,19 +27,21 @@ function get_all_safety(): array
     return $all_safety;
 }
 
-function get_safety(string $emp_no)
+function get_safety(int $safety_id)
 {
     $result = null;
     try {
         $pdo = getPDO();
-        $select = "SELECT Saf.safety_id, Saf.can_work_no, Saf.status_id,Saf.current_location, E.emp_no, E.ename, S.status, Saf.comment, DATE(Saf.create_at) as day, TIME(Saf.create_at) as time 
+        $select = "SELECT Saf.safety_id, C.can_work, Saf.status_id, D.dname,Saf.current_location, E.emp_no, E.ename, S.status, Saf.comment, DATE(Saf.create_at) as day, TIME(Saf.create_at) as time 
                     FROM safety Saf 
                     JOIN employee E ON  Saf.emp_no = E.emp_no 
                     JOIN status S ON Saf.status_id = S.status_id
-                    WHERE E.emp_no = :emp_no";
+                    JOIN department D ON E.dept_no = D.dept_no
+                    JOIN canwork C ON Saf.can_work_no = C.can_work_no
+                    WHERE Saf.safety_id = :safety_id";
         $stmt = $pdo->prepare($select);
         $stmt->execute([
-            "emp_no" => $emp_no
+            "safety_id" => $safety_id
         ]);
         $result = $stmt->fetch();
     } catch (\Throwable $th) {
