@@ -14,6 +14,7 @@
     <header>
         <h1>登録画面</h1>
     </header>
+    
     <form action="./../../server/safety/safety_create.php" method="post">
 
         <div class="title">
@@ -52,7 +53,10 @@
                </div>
     
       <input type="submit" value="送信">
-      <a href="./Home.php">戻る</a>
+    <div class="bottom-links">
+        <a href="./Home.php">戻る</a>
+        <a href="index.php">ログアウト</a>
+    </div>
     </form>
 
     </div>
