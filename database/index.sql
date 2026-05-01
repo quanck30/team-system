@@ -20,9 +20,9 @@ INSERT INTO status (status) VALUES
 ('救助が必要');
 
 INSERT INTO canwork(can_work) VALUES 
-('出勤可能'),
+('可能'),
 ('出勤可 (在宅のみ)'),
-('出勤不可');
+('不可');
 
 INSERT INTO department (dname, mgr_no) VALUES 
 ('管理部', NULL),
