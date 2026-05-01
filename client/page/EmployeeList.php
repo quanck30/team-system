@@ -30,6 +30,9 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
     
     
     <h2>社員一覧表示</h2>
+    <div class="bottom-links">
+        <a href="registerform.php">新規登録</a>
+    </div>
 
     <section class="safety-display">
         <table>
@@ -38,7 +41,7 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
                     <th>社員番号</th>
                     <th>名前</th>
                     <th>部署</th>
-                    <th></th>
+                    <th>住所</th>
                 </tr>
             </thead>
 
@@ -49,29 +52,34 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
                      <th><?= h($safety["status"]) ?></th>
                      <th><?= h($safety["comment"]) ?></th>
                  </tr> -->
+                 
                 <!-- <?php endforeach ?> -->
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
                     <td>大阪市店</td>
+                    <td>大阪府大阪市</td>
 
                 </tr>
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
                     <td>大阪市店</td>
+                    <td>大阪府大阪市</td>
 
                 </tr>
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
                     <td>大阪市店</td>
+                    <td>大阪府大阪市</td>
 
                 </tr>
                 <tr>
                     <td>20260304</td>
                     <td>佐藤太郎</td>
                     <td>大阪市店</td>
+                    <td>大阪府大阪市</td>
 
                 </tr>
                 
@@ -80,7 +88,10 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
         </table>
        <!-- <?php echo $emp_no  ?><br>  -->
     </section>
-     <a href="./Home.php">戻る</a><a href="index.php">ログアウト</a>
+    <div class="bottom-links">
+        <a href="kanrisha.php">戻る</a>
+        <a href="index.php">ログアウト</a>
+    </div>
 </body>
 
 </html>

@@ -52,7 +52,10 @@ $safety = get_safety($safety_id);
             </tr>
         <?php endif; ?>
     </table>
-
+ <div class="bottom-links">
+        <a href="./Home.php">戻る</a>
+        <a href="index.php">ログアウト</a>
+</div>
 </body>
 
 </html>

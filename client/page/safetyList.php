@@ -48,7 +48,9 @@ $all_safety = get_all_safety();
                     <tr class="clickable-row" data-href="./safetydetail.php?safety_id=<?= h($safety["safety_id"]) ?>">
                         <td><?= h($safety["emp_no"]) ?></td>
                         <td><?= h($safety["ename"]) ?></td>
-                        <td><?= h($safety["status"]) ?></td>
+                        <td data-status="<?= h($safety["status"]) ?>">
+                            <?= h($safety["status"]) ?>
+                        </td>
                         <td><?= h($safety["can_work"]) ?></td>
 
                         <td>
