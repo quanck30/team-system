@@ -104,3 +104,18 @@ tbody a:hover {
 .bottom-links a:hover {
   text-decoration: underline;
 }
+
+.delete{
+  width: 90%;
+  max-width: 1000px;
+  margin: 15px auto;
+  text-align: right;
+}
+.delete a{
+   margin-left: 15px;
+  color: #ff0000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+

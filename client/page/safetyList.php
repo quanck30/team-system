@@ -1,13 +1,8 @@
 <?php
-// 安否一覧表示画面
-// 2026・04・21
 require_once __DIR__ . "/../../server/safety/safety_show.php";
 require_once __DIR__ . "/../../helpers/def.php";
 require_once __DIR__ . "/../../helpers/utils.php";
-// if (empty($_SESSION["emp_no"])) {
-//     header("Location: " . TEAM_SYSTEM . "/client/index.php");
-//     exit;
-// };
+
 $dept_no = $_SESSION["dept_no"] ?? 0;
 $all_safety = get_all_safety();
 ?>
@@ -20,7 +15,6 @@ $all_safety = get_all_safety();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社員安否一覧画面</title>
     <link rel="stylesheet" href="./../css/safetyList.css">
-
 </head>
 
 <body>
@@ -30,9 +24,8 @@ $all_safety = get_all_safety();
         </div>
     </header>
 
-
-
-    <h2>安否一覧表示</h2><a class="back" href="./touroku.php">安否登録</a>
+    <h2>安否一覧表示</h2>
+    <a class="back" href="./touroku.php">安否登録</a>
 
     <section class="safety-display">
         <table>
@@ -42,11 +35,11 @@ $all_safety = get_all_safety();
                     <th>名前</th>
                     <th>安否状態</th>
                     <th>出社状態</th>
-                    <th></th>
-                    <th></th>
+                    <th>編集</th>
                     <?php if ($dept_no === 1): ?>
-                        <th></th>
+                        <th>削除</th>
                     <?php endif ?>
+                    <th>削除</th>
                 </tr>
             </thead>
 
@@ -57,19 +50,33 @@ $all_safety = get_all_safety();
                         <td><?= h($safety["ename"]) ?></td>
                         <td><?= h($safety["status"]) ?></td>
                         <td><?= h($safety["can_work"]) ?></td>
-                        <td><a href=<?= "./safety_update.php?safety_id=" . $safety["safety_id"] ?>>編集</a></td>
+
+                        <td>
+                            <a href="<?= "./safety_update.php?safety_id=" . $safety["safety_id"] ?>">編集</a>
+                        </td>
+
                         <?php if ($dept_no === 1): ?>
-                            <td><a href="./safetydetail.php?">削除</a></td>
+                            <td>
+                                <a class="delete-btn" href="./delete.php?safety_id=<?= $safety["safety_id"] ?>">削除</a>
+                            </td>
                         <?php endif ?>
-                        <td><a href=<?= "./delete.php?safety_id=" . $safety["safety_id"] ?>>削除</a></td>
+
+                        <td>
+                        <div class="delete">
+                            <a class="delete-btn" href="<?= "./delete.php?safety_id=" . $safety["safety_id"] ?>">削除</a>
+                        </div>
+</td>
+
                     </tr>
                 <?php endforeach ?>
-
-
             </tbody>
         </table>
     </section>
 
+    <div class="bottom-links">
+        <a href="./touroku.php">戻る</a>
+        <a href="./index.php">ログアウト</a>
+    </div>
 
     <script src="./../js/safetyList.js"></script>
 </body>
