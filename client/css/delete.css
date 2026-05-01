@@ -38,11 +38,12 @@ p {
 /* buttons */
 .buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 15px;
 }
 
 .buttons a {
-    width: 45%;
+    width: 140px;
     padding: 12px;
     border-radius: 10px;
     text-decoration: none;
