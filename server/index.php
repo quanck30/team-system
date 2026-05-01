@@ -9,33 +9,16 @@ require_once __DIR__ . "/../helpers/utils.php";
 
 //セッションスタート
 session_start();
-// function access()
-// {
-//     header("Location: " . TEAM_SYSTEM . "/client/index.php");
-//     exit;
-// }
-// //POSTじゃないならHomeに返す
-// if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-//     access();
-// }
 
-
-// function kengen($dept_no,$page){//管理者なのかチェック
-//     if ($dept_no === "1") {
-//         header("Location: " . TEAM_SYSTEM . "/client/page/" . $page . ".php");
-//         exit;
-//     } else {
-//         header("Location: " . TEAM_SYSTEM . "/client/page/Home.php");
-//         exit;
-//     }
-// }
-
+if($_SERVER['REQUEST_METHOD'] !== "POST"){
+    exit;
+}
 
 //　IDが空じゃないか
 $raw_emp_no = $_POST['emp_no'] ?? "";
 if (empty($raw_emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号が空です。";
-    access($_SESSION['dept_no']);
+    // access($_SESSION['dept_no']);//まだセッションにdept_noなどが格納されていない
 }
 //　IDがint型か
 if (!ctype_digit($raw_emp_no)) {
@@ -58,9 +41,6 @@ if (!empty($_SESSION['emp_no_err']) || !empty($_SESSION['pass_err'])){
     homeidou();
     exit;
 }
-
-// パスワードをハッシュ化
-// $hashpass = password_verify($pass , PASSWORD_DEFAULT);
 
 
 try {

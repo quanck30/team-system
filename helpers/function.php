@@ -9,8 +9,6 @@ function homeidou()
     exit;
 };
 
-//ログイン状態じゃなかったらはじく処理
-
 
 //URL直打ちを対策
 function access($dept_no)

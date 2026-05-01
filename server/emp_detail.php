@@ -3,7 +3,7 @@
 //マサキカイリ
 
 require_once __DIR__ . "/../helpers/function.php";
-require_once __DIR__ . "/../helpers/def.php";
+require_once __DIR__ . "/../helpers/def.php";//多分def.phpいらない
 require_once __DIR__ . "/../helpers/utils.php";
 
 
@@ -13,11 +13,6 @@ session_start();
 //URL直打ちの対策と権限があるか
 access($_SESSION['dept_no']);
 
-// if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-//     homeidou();
-// }
-
-
 function user_detail($emp_no)
 {
     try{
@@ -25,11 +20,13 @@ function user_detail($emp_no)
         $db = getPDO();
 
         // sqlで社員のidで情報をとってくる
-        //TODO:　join　安否情報は必要かどうか検討
-        $sql = "SELECT * FROM EMPLOYEE WHERE EMP_NO = :emp_no";
-
+        // joinの処理を書く
+        $sql = "SELECT /*TODO:ここに取ってくる情報*/ FROM EMPLOYEE AS E 
+                JOIN DEPARTMENT AS D ON E.DEPT_NO = D.DEPT_NO 
+                WHERE EMP_NO = :emp_no";
+       
         $stmt = $db->prepare($sql);
-        //bindValueで型が正しいか確認
+        //bindValueで型が正しいか確認して代入
         $stmt->bindValue(':emp_no', $emp_no, PDO::PARAM_STR);
 
         //userに結果を格納

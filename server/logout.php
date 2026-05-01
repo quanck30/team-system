@@ -5,6 +5,8 @@
 
 require_once __DIR__ . "/../helpers/function.php";
 
+//ファンクションにするのもあり
+
 //セッションの削除
 $_SESSION = [];
 if(isset($_COOKIE[session_name()])){

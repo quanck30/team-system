@@ -14,14 +14,6 @@ session_start();
 //URL直打ちの対策と権限があるか
 access($_SESSION['dept_no']);
 
-// if ($_SERVER["REQUEST_METHOD"] !== "POST") { 
-//     homeidou();
-// }
-
-// $page = "manager";// 管理者用メニュー画面に戻すパス
-// kengen($_SESSION['dept_no'] ?? 0 , $page); //0の場合Home.phpに遷移
-
-
 function get_info()
 {
     try{
