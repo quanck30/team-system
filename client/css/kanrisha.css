@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    background: #e7edf3;
     margin: 0;
 }
 
@@ -10,6 +10,15 @@ body {
 }
 
 h1 {
+    background: #4db8ff; 
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: bold;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 5px;
     margin-bottom: 30px;
 }
 
@@ -23,7 +32,7 @@ h1 {
 
 .card {
     display: block;
-    background: white;
+    background:white;
     padding: 20px;
     border-radius: 10px;
     text-decoration: none;
@@ -46,15 +55,6 @@ h1 {
     color: gray;
 }
 
-/* Delete = danger style */
-.card.danger {
-    border: 2px solid red;
-}
-
-.card.danger:hover {
-    background: #ffe5e5;
-}
-
 /* Logout */
 .logout {
     margin-top: 30px;
@@ -63,7 +63,7 @@ h1 {
 .logout a {
     text-decoration: none;
     color: white;
-    background: #333;
+    background:rgb(18, 109, 189);
     padding: 10px 20px;
     border-radius: 5px;
 }
