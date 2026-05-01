@@ -2,11 +2,13 @@ body {
     font-family: Arial, sans-serif;
     background:rgb(27, 251, 251);
     margin: 0;
+    
 }
 
 .container {
     text-align: center;
     padding: 40px;
+
 }
 
 h1 {
