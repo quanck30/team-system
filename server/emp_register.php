@@ -11,7 +11,7 @@ require_once __DIR__ . "/../helpers/utils.php";
 session_start();
 
 //URLの直打ちを対策
-access($_SESSION['dept_no']);
+access();
 
 // if ($_SERVER["REQUEST_METHOD"] !== "POST") { 
 //     homeidou();
@@ -59,6 +59,8 @@ foreach ($info_fields as $info => $label) {
     }
 }
 
+//TODO:社員番号はSTR型か
+
 //英数字混合か判断 preg_matchは英数字が含まれてたら1 含まれていなかったら0を返す
 if(preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', $inputs['password']) === 0){
     $errors['no_pass_mix'] = "パスワードは英数字混合にしてください。";
@@ -80,10 +82,10 @@ $_SESSION['info_null_err'] = $errors;
 if (empty($errors)) {
     try {
         //DB登録
-        $db = getPDO();
+        $pdo = getPDO();
 
         //トランザクション開始
-        $db->beginTransaction();
+        $pdo->beginTransaction();
 
         //sql文
         $sql = "INSERT INTO EMPLOYEE (
@@ -91,7 +93,7 @@ if (empty($errors)) {
                     ) values (
                         :emp_no ,:ename ,:birthday ,:sex ,:tel ,:address ,:job ,:salary ,:dept_no ,:mgr_no ,:admin_role ,:password)";
 
-        $stmt = $db->prepare($sql); //sqlの準備
+        $stmt = $pdo->prepare($sql); //sqlの準備
 
         $params = [
             ':emp_no'     => $inputs['emp_no'],
@@ -112,10 +114,10 @@ if (empty($errors)) {
         $stmt->execute($params);
 
         //コミット  
-        $db->commit();
+        $pdo->commit();
         $_SESSION['register_success'] = "データの登録が成功しました";
     } catch (PDOException $poe) {
-        $db->rollback();
+        $pdo->rollback();
         $_SESSION['register_err'] = "データの登録に失敗しました   <br>詳細：" . $poe->getMessage();
         exit;
     }

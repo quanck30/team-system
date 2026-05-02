@@ -1,6 +1,7 @@
 <?php
 // 削除確認
 $safety_id = filter_input(INPUT_GET, "safety_id", FILTER_VALIDATE_INT);
+//TODO:管理者かどうか
 ?>
 <!DOCTYPE html>
 <html lang="ja">

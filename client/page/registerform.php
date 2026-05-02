@@ -1,3 +1,7 @@
+<?php
+//TODO:管理者かどうか
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -61,6 +65,7 @@
 
         <div class="form-group">
         <label>部署番号 (DEPT_NO)</label>
+        <!-- TODO:dept_noをDBに送って文字をとってくる -->
             <select name="dept_no" type="text" required>
                 <option value="1">営業</option>
                 <option value="2">人事</option>

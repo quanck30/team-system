@@ -21,9 +21,9 @@ if (empty($raw_emp_no)) {
     // access($_SESSION['dept_no']);//まだセッションにdept_noなどが格納されていない
 }
 //　IDがint型か
-if (!ctype_digit($raw_emp_no)) {
-    $_SESSION['emp_no_err'] = "従業員番号に数字以外が入っています";
-}
+// if (!ctype_digit($raw_emp_no)) {
+//     $_SESSION['emp_no_err'] = "従業員番号に数字以外が入っています";
+// }
 
 // パスワードは空じゃないか
 $pass = $_POST['password'];
@@ -32,9 +32,9 @@ if (empty($pass)) {
 }
 
 // パスワードが8文字以上か
-if(strlen(trim($pass)) <= 7){
-$_SESSION['pass_err'] = "パスワードを8文字以上に設定してください";
-}
+// if(strlen(trim($pass)) <= 7){
+// $_SESSION['pass_err'] = "パスワードを8文字以上に設定してください";
+// }
 
 //エラーメッセージがあったらHomeに移動
 if (!empty($_SESSION['emp_no_err']) || !empty($_SESSION['pass_err'])){
@@ -45,12 +45,12 @@ if (!empty($_SESSION['emp_no_err']) || !empty($_SESSION['pass_err'])){
 
 try {
     // データべースと接続
-    $db = getPDO();
+    $pdo = getPDO();
 
     //社員IDで情報をとってくる
     $sql = "SELECT * FROM EMPLOYEE WHERE EMP_NO = :emp_no";
 
-    $stmt = $db->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     //bindValueで型が正しいか確認
     $stmt->bindValue(':emp_no', $raw_emp_no, PDO::PARAM_INT);
 
@@ -68,9 +68,7 @@ try {
         $_SESSION['logged_in'] = 1;
 
         //dept_no(部署)が１なら管理人の画面に遷移
-        $dept_no = $user['DEPT_NO'];
-        if ($dept_no === "1") {
-            // $page = "manager";
+        if ($user['dept_no'] === 1) {
             nextpage("kanrisha");
         } else {
             //安否登録画面に遷移
@@ -86,6 +84,8 @@ try {
     }
     exit;
 } catch (PDOException $poe) {
+    
+    $_SESSION["login_db_err"] = "DBエラー" . $poe->getMessage();
     homeidou();
-    exit("DBエラー" . $poe->getMessage());//開発時だけメッセージ表示
+    exit;//開発時だけメッセージ表示
 }

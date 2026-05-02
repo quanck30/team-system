@@ -2,6 +2,7 @@
 // ログイン画面処理
 require_once __DIR__ . "/../helpers/utils.php";
 session_start();
+$login_db_err = $_SESSION["login_db_err"];
 $emp_no_err = $_SESSION["emp_no_err"] ?? "";
 $pass_err = $_SESSION["pass_err"] ?? "";
 unset($_SESSION["emp_no_err"]);
@@ -19,6 +20,12 @@ unset($_SESSION["pass_err"]);
 </head>
 
 <body>
+    <?php if (!empty($login_err)): ?>
+        <p><?= h($login_db_err) ?></p>
+    <?php else: ?>
+        <p></p>
+    <?php endif; ?>
+
     <form action="./../server/index.php" method="POST">
         <h2>ログイン</h2>
         <div>

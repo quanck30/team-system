@@ -6,13 +6,13 @@ require_once __DIR__ . "/../helpers/function.php";
 require_once __DIR__ . "/../helpers/def.php";
 require_once __DIR__ . "/../helpers/utils.php";
 
-
+//TODO:やらなくていける
 
 //セッションスタート
 session_start();
 
 //URLの直打ちを対策
-access($_SESSION['dept_no']);
+access();
 
 $password = $_POST['password'];
 $emp_no = $_POST['emp_no'];
@@ -29,20 +29,20 @@ if (preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', $inputs['password']) === 0) {
 }
 
 try{
-    $db = getPDO();
+    $pdo = getPDO();
 
     //トランザクション開始
-    $db->beginTransaction();
+    $pdo->beginTransaction();
 
     //UPDATE文
     $sql = "UPDATE EMPLOYEE SET password = :password WHERE emp_no = :emp_no";
 
-    $stmt = $db->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':password', $password , PDO::PARAM_STR);
     $stmt->bindValue(':emp_no', $emp_no, PDO::PARAM_STR);
     $stmt->execute();
 
-    $db->commit();
+    $pdo->commit();
 
 } catch(PDOException $poe){
     $_SESSION['pass_riset_err'] = $poe->getMessage();
