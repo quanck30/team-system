@@ -45,11 +45,11 @@ label {
     margin-bottom: 6px;
 }
 
-<<<<<<< HEAD
-input[type="number"],input[type="text"],
-=======
+/* /* <<<<<<< HEAD */
 input[type="text"],
->>>>>>> 0e68939257a7d71a239af1018a52847283971280
+
+input[type="text"],
+
 input[type="password"] {
     width: 100%;
     padding: 10px;
