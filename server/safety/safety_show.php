@@ -32,6 +32,7 @@ function get_safety(int $safety_id)
     $result = null;
     try {
         $pdo = getPDO();
+        
         $select = "SELECT Saf.safety_id, C.can_work, Saf.status_id, D.dname,Saf.current_location, E.emp_no, E.ename, S.status, Saf.comment, DATE(Saf.create_at) as day, TIME(Saf.create_at) as time 
                     FROM safety Saf 
                     JOIN employee E ON  Saf.emp_no = E.emp_no 
