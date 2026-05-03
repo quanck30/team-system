@@ -104,3 +104,38 @@ tbody a:hover {
 .bottom-links a:hover {
   text-decoration: underline;
 }
+
+.delete{
+  width: 90%;
+  max-width: 1000px;
+  margin: 15px auto;
+  text-align: right;
+}
+.delete a{
+   margin-left: 15px;
+  color: #d40000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+td[data-status="無事"] {
+    color: #2ecc71; 
+    font-weight: bold;
+}
+
+td[data-status="軽傷"] {
+    color: #f1c40f; 
+    font-weight: bold;
+}
+
+td[data-status="重傷"] {
+    color: #e74c3c; 
+    font-weight: bold;
+}
+
+td[data-status="救助が必要"] {
+    color: #8e44ad; 
+    font-weight: bold;
+}
+
+

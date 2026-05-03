@@ -14,6 +14,7 @@
     <header>
         <h1>登録画面</h1>
     </header>
+    
     <form action="./../../server/safety/safety_create.php" method="post">
 
         <div class="title">
@@ -35,10 +36,9 @@
         <div class="form">
             <label>現在位置はどこですか？</label>
             <input type="text" name="location"
-            placeholder="例）大阪駅"
-            >
+                placeholder="例）大阪駅">
         </div>
-       
+
         コメント
         <div class="form-group horizpntal-layout">
         <label class="form-label">
@@ -52,11 +52,14 @@
                </div>
     
       <input type="submit" value="送信">
-      <a href="./Home.php">戻る</a>
+    <div class="bottom-links">
+        <a href="./Home.php">戻る</a>
+        <a href="index.php">ログアウト</a>
+    </div>
     </form>
 
     </div>
-    
+
     <!-- <a href="safetyList.php">社員安否一覧画面</a> -->
 </body>
 

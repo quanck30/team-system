@@ -12,7 +12,7 @@ require_once __DIR__ . "/../helpers/utils.php";
 session_start();
 
 //URL直打ちの対策と権限があるか
-access();
+// access();//これいらない
 
 function get_info()
 {

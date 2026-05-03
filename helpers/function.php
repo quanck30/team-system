@@ -13,12 +13,8 @@ function homeidou()
 //URL直打ちを対策
 function access()
 {
-    if( $_SERVER["REQUEST_METHOD"] !== "POST" ||empty($_SESSION["emp_no"])) {
-        
-        if( $_SERVER["REQUEST_METHOD"] !== "GET"){
-            homeidou();
-        }
-            
+    if($_SERVER["REQUEST_METHOD"] !== "POST" || isset($_SERVER["REQUEST_METHOD"]) || $_SESSION["dept_no"] !== "1" || $_SESSION['logged_in'] !== 1) {
+        homeidou();
     }
 };
 
