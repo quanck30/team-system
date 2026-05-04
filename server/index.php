@@ -10,6 +10,8 @@ require_once __DIR__ . "/../helpers/utils.php";
 //セッションスタート
 session_start();
 
+access();
+
 if ($_SERVER['REQUEST_METHOD'] !== "POST") {
     homeidou();
     exit;

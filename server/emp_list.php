@@ -21,9 +21,19 @@ function get_info()
         $pdo = getPDO();
 
         // sqlでselect文(社員一覧)
-        $sql = "SELECT E.*, D.dname AS dname, M.ename AS mname FROM employee E
-                JOIN department D ON E.dept_no = D.dept_no 
-                LEFT JOIN employee M ON E.dept_no = M.dept_no AND M.job_no = 1";
+        $sql = "SELECT 
+                E.*, 
+                D.dname AS dname, 
+                (  
+                    SELECT ename 
+                    FROM employee 
+                    WHERE dept_no = E.dept_no 
+                    AND job_no = 1 
+                    LIMIT 1 
+                ) AS mname 
+            FROM employee E
+            JOIN department D ON E.dept_no = D.dept_no 
+            ORDER BY E.emp_no ASC;";
 
         $stmt = $pdo->prepare($sql);
 

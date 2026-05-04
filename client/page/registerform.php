@@ -129,6 +129,7 @@ unset($_SESSION["register_err"]);
             </form>
 
             <p><a href="../index.php">ログインに戻る</a></p>
+            <p><a href="kanrisha.php">管理者画面</a></p>
 
         </div>
     </div>
