@@ -1,18 +1,20 @@
 <?php
 
 require_once __DIR__ . "/../../helpers/def.php";
+require_once __DIR__ . "/../../helpers/utils.php";
 session_start();
-
 // 管理者かどうか
 if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] !== 1) {
     header("Location: " . TEAM_SYSTEM . "/client/index.php");
     exit;
 }
 
-$empty_err = $_SESSION["info_null_err"] ?? "";
-$no_pass_mix = $_SESSION["no_pass_mix"] ?? "";
-$no_pass_enough = $_SESSION["no_pass_enough"] ?? "";
-$no_pass_err = $_SESSION["no_pass_err"] ?? "";
+$erres = $_SESSION["erres"] ?? "";
+$register_err = $_SESSION["register_err"] ?? "";
+unset($_SESSION["erres"]);
+unset($_SESSION["register_err"]);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -28,26 +30,34 @@ $no_pass_err = $_SESSION["no_pass_err"] ?? "";
 
     <div class="wrapper">
         <div class="container">
-
-            <?php if (isset($empty_err)): ?><!--それぞれの項目が空じゃないか-->
-                <p><?= $empty_err ?></p>
-            <?php else: ?>
-                <p></p>
-            <?php endif ?>
-
             <h2>社員登録</h2>
             <p class="subtitle">新しい社員情報を入力してください</p>
+
+            <?php if (!empty($register_err)): ?>
+                <p><?= $register_err ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($erres)): ?>
+                <?php foreach ((array)$erres as $err): ?>
+                    <p><?= $err ?></p>
+                <?php endforeach; ?>
+            <?php endif ?>
 
             <form action="../../server/emp_register.php" method="post">
 
                 <div class="form-group">
                     <label>社員番号</label>
-                    <input name="emp_no" type="text" placeholder="例: 2260392" required>
+                    <input name="emp_no" type="text" placeholder="例: 20260001" required>
                 </div>
 
                 <div class="form-group">
-                    <label>名前 (ENAME)</label>
-                    <input name="ename" type="text" placeholder="例: 山田 太郎" required>
+                    <label>苗字</label>
+                    <input name="Lname" type="text" placeholder="例: 山田" required>
+                </div>
+
+                <div class="form-group">
+                    <label>名前</label>
+                    <input name="Fname" type="text" placeholder="例: 太郎" required>
                 </div>
 
                 <div class="form-group">
@@ -66,7 +76,7 @@ $no_pass_err = $_SESSION["no_pass_err"] ?? "";
 
                 <div class="form-group">
                     <label>電話番号</label>
-                    <input name="tel" type="text" required>
+                    <input name="tel" type="text" placeholder="例: 000-0000-0000" required>
                 </div>
 
                 <div class="form-group">
@@ -76,7 +86,7 @@ $no_pass_err = $_SESSION["no_pass_err"] ?? "";
 
                 <div class="form-group">
                     <label>職種</label>
-                    <select name="job" required>
+                    <select name="job_no" required>
                         <option value="1">システムエンジニア</option>
                         <option value="2">WEBデザイナー</option>
                         <option value="3">カスタマーサポート</option>
@@ -85,16 +95,16 @@ $no_pass_err = $_SESSION["no_pass_err"] ?? "";
                 </div>
 
                 <div class="form-group">
-                    <label>部署番号</label>
+                    <label>部署</label>
                     <select name="dept_no" required>
-                        <option value="1">営業</option>
-                        <option value="2">人事</option>
-                        <option value="3">マーケティング</option>
-                        <option value="4">財務</option>
+                        <option value="1">管理部</option>
+                        <option value="2">営業部</option>
+                        <option value="3">開発部</option>
+                        <option value="4">総務部</option>
                     </select>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>管理番号</label>
                     <select name="mgr_no" required>
                         <option value="1">E001</option>
@@ -102,33 +112,16 @@ $no_pass_err = $_SESSION["no_pass_err"] ?? "";
                         <option value="3">E003</option>
                         <option value="4">E004</option>
                     </select>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label>パスワード</label>
                     <input name="password" type="password" required>
-                    <?php if (isset($no_pass_mix)): ?><!--数字混合か-->
-                        <p><?= $no_pass_mix ?></p>
-                    <?php else: ?>
-                        <p></p>
-                    <?php endif ?>
-
-                    <?php if (isset($no_pass_enough)): ?><!--8文字以上か-->
-                        <p><?= $no_pass_enough ?></p>
-                    <?php else: ?>
-                        <p></p>
-                    <?php endif ?>
-
                 </div>
 
                 <div class="form-group">
                     <label>パスワード確認</label>
                     <input name="confirm_password" type="password" required>
-                    <?php if (isset($no_pass_err)): ?><!--パスワードの合致-->
-                        <p><?= $no_pass_err ?></p>
-                    <?php else: ?>
-                        <p></p>
-                    <?php endif ?>
                 </div>
 
                 <button type="submit">登録</button>
