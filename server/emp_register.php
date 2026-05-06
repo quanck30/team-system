@@ -81,9 +81,12 @@ foreach ($info_fields as $info => $label) {
 }
 // echo $inputs["job_no"];//TODO
 
-// TODO:社員番号はSTR型か
+// 社員番号はSTR型か
 if(!is_string($inputs["emp_no"])){
     $errors[] = "半角数字だけにしてください。";
+}
+if(strlen($inputs['emp_no']) !== 8){
+    $errors[] = "社員番号は8桁にしてください。";
 }
 
 //英数字混合か判断 preg_matchは英数字が含まれてたら1 含まれていなかったら0を返す
@@ -92,7 +95,7 @@ if (preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', $inputs['password']) === 0) {
 }
 
 //パスワードが8文字以上か
-if (strlen(trim($inputs['password'])) <= 7) {
+if (strlen($inputs['password']) <= 7) {
     $errors[] = "パスワードを8文字以上に設定してください。";
 }
 

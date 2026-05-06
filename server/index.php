@@ -10,7 +10,7 @@ require_once __DIR__ . "/../helpers/utils.php";
 //セッションスタート
 session_start();
 
-access();
+// access();
 
 if ($_SERVER['REQUEST_METHOD'] !== "POST") {
     homeidou();
@@ -18,20 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] !== "POST") {
 }
 
 //　IDが空じゃないか
-$raw_emp_no = $_POST['emp_no'] ?? "";
-if (empty($raw_emp_no)) {
+$emp_no = $_POST['emp_no'] ?? "";
+if (empty($emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号が空です。";
-    // access($_SESSION['dept_no']);//まだセッションにdept_noなどが格納されていない
 }
-//　IDがint型か
-// if (!ctype_digit($raw_emp_no)) {
-//     $_SESSION['emp_no_err'] = "従業員番号に数字以外が入っています";
-// }
 
 // パスワードは空じゃないか
 $pass = $_POST['password'];
 if (empty($pass)) {
-    $_SESSION['pass_err'] = "パスワードが空です。 <br>";
+    $_SESSION['pass_err'] = "パスワードが空です。";
 }
 
 // パスワードが8文字以上か
@@ -39,8 +34,13 @@ if (empty($pass)) {
 // $_SESSION['pass_err'] = "パスワードを8文字以上に設定してください";
 // }
 
-//エラーメッセージがあったらHomeに移動
-if (!empty($_SESSION['emp_no_err']) || !empty($_SESSION['pass_err'])) {
+$emp_no = trim($emp_no);
+if (!preg_match('/^[0-9]{8}$/' , $emp_no) || !ctype_digit($emp_no)) {
+    $_SESSION['emp_err'] = "社員番号が正しくありません。";
+}
+
+    //エラーメッセージがあったらHomeに移動
+    if (!empty($_SESSION['emp_err']) || !empty($_SESSION['emp_no_err']) || !empty($_SESSION['pass_err'])) {
     homeidou();
     exit;
 }
@@ -55,11 +55,19 @@ try {
 
     $stmt = $pdo->prepare($sql);
     //bindValueで型が正しいか確認
-    $stmt->bindValue(':emp_no', $raw_emp_no, PDO::PARAM_INT);
+    $stmt->bindValue(':emp_no', $emp_no, PDO::PARAM_INT);
 
     //userに結果を格納
     $stmt->execute();
     $user = $stmt->fetch();
+
+    if ($user === false || !password_verify($pass, $user['password'])) {
+        // ログイン失敗の処理
+        $_SESSION['login_err'] = "従業員番号またはパスワードが正しくありません。";
+        homeidou();
+        exit;
+    }
+
     // ハッシュ化したパスワードを照合
     if ($user && password_verify($pass, $user['password'])) {
         $_SESSION['emp_no'] = $user['emp_no'];
@@ -78,14 +86,11 @@ try {
         $stmt = null;
         $db = null;
         //パスワードが間違ってたらHomeに遷移
-    } else {
-        $_SESSION["pass_err"] = "パスワードが間違っている";
-        homeidou();
     }
     exit;
 } catch (PDOException $poe) {
     
     $_SESSION["login_db_err"] = "DBエラー" . $poe->getMessage();
-    homeidou();
+    // homeidou();
     exit;//開発時だけメッセージ表示
 }
