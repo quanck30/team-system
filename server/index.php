@@ -73,7 +73,7 @@ try {
         $_SESSION['emp_no'] = $user['emp_no'];
         $_SESSION['dept_no'] = $user['dept_no'];
         //ログイン済みを 1 それ以外は未定義
-        $_SESSION['logged_in'] = 1;
+        // $_SESSION['logged_in'] = 1;
 
         //dept_no(部署)が１なら管理人の画面に遷移
         if ($user['dept_no'] === 1) {
