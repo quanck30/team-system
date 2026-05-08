@@ -72,7 +72,7 @@ unset($_SESSION["old_inputs"]);
                     <label>性別</label>
                     <select name="sex" required>
                         <option value="">選択してください</option>
-                        <option value="M" <?= (isset($old_inputs["sex"]) && $old_inputs["sex"] === 'M') ? 'selected' : ''?>>男性</option>
+                        <option value="M" <?= (isset($old_inputs["sex"]) && $old_inputs["sex"] === 'M') ? 'selected' : '' ?>>男性</option>
                         <option value="F" <?= (isset($old_inputs["sex"]) && $old_inputs["sex"] === 'F') ? 'selected' : '' ?>>女性</option>
                     </select>
                 </div>

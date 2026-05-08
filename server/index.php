@@ -34,6 +34,11 @@ if (empty($pass)) {
 // $_SESSION['pass_err'] = "パスワードを8文字以上に設定してください";
 // }
 
+//英数字混合か判断 preg_matchは英数字が含まれてたら1 含まれていなかったら0を返す
+// if (preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', $inputs['password']) === 0) {
+//     $errors[] = "パスワードは英数字混合にしてください。";
+// }
+
 $emp_no = trim($emp_no);
 if (!preg_match('/^[0-9]{8}$/' , $emp_no) || !ctype_digit($emp_no)) {
     $_SESSION['emp_err'] = "社員番号が正しくありません。";

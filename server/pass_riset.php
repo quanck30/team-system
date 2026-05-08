@@ -28,9 +28,11 @@ function passriset($emp_no , $password)
         $stmt->execute();
 
         $pdo->commit();
+        return "データの登録が完了しました。";
     } catch (PDOException $poe) {
         $pdo->rollback();
         $_SESSION['pass_riset_err'] = $poe->getMessage();
+        return "データの登録に失敗しました。";
         exit;
     }
 }
