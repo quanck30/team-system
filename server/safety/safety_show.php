@@ -15,7 +15,7 @@ function get_all_safety(): array
                     JOIN employee E ON  Saf.emp_no = E.emp_no 
                     JOIN status S ON Saf.status_id = S.status_id
                     JOIN canwork C ON Saf.can_work_no = C.can_work_no
-                    ORDER BY S.status_id DESC";
+                    ORDER BY S.status_id DESC, E.emp_no";
         $stmt = $pdo->prepare($select);
         $stmt->execute();
         while ($safety = $stmt->fetch()) {
