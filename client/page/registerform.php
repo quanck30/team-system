@@ -33,7 +33,7 @@ unset($_SESSION["register_err"]);
 
     <?php if (!empty($register_err)) : ?>
     <p class="err"><?= $register_err ?></p>
-    <?php endif; ?>
+<?php endif; ?>
 
 
     <div class="wrapper">
