@@ -44,7 +44,6 @@ $all_safety = get_all_safety();
                     <?php if ($dept_no === 1): ?>
                         <th>削除</th>
                     <?php endif ?>
-                    <th>削除</th>
                 </tr>
             </thead>
 
@@ -55,19 +54,10 @@ $all_safety = get_all_safety();
                         <td><?= h($safety["ename"]) ?></td>
                         <td><?= h($safety["status"]) ?></td>
                         <td><?= h($safety["can_work"]) ?></td>
-                        <td><a href=<?= "./safety_update.php?safety_id=" .h($safety["safety_id"]) ?>>編集</a></td>
+                        <td><a href="<?= "./safety_update.php?safety_id=" . h($safety["safety_id"]) ?>">編集</a></td>
                         <?php if ($dept_no === 1): ?>
-                            <td><a href=<?= "./delete.php?safety_id=" .h($safety["safety_id"]) ?>>削除</a></td>
+                            <td><a href=<?= "./delete.php?safety_id=" . h($safety["safety_id"]) ?>>削除</a></td>
                         <?php endif ?>
-                    </tr>
-                <?php endforeach ?>
-
-                        <td>
-                        <div class="delete">
-                            <a class="delete-btn" href="<?= "./delete.php?safety_id=" . $safety["safety_id"] ?>">削除</a>
-                        </div>
-</td>
-
                     </tr>
                 <?php endforeach ?>
             </tbody>
