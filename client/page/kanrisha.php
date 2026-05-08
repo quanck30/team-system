@@ -1,3 +1,15 @@
+<?php
+require_once __DIR__ . "/../../helpers/def.php";
+session_start();
+
+//管理人かどうか
+if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] !== 1) {
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
+    exit;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,7 +22,7 @@
     <div class="container"> 
     <h1>管理者メニュー</h1>
     <div class="menu">
-        <a href="../../server/emp_list.php" class="card" >
+        <a href="EmployeeList.php" class="card" >
             <h2>社員一覧</h2>
             <p>社員情報を確認・管理</p>
         </a>
