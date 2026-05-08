@@ -36,7 +36,7 @@ $users = get_info();
             <h1>社員一覧画面</h1>
         </div>
     </header>
-    
+
     <?php if (isset($db_err)): ?>
         <p><?= h($db_err) ?></p>
     <?php endif; ?>
