@@ -10,7 +10,10 @@ require_once __DIR__ . "/../helpers/utils.php";
 //セッションスタート
 session_start();
 
+access();
+
 if ($_SERVER['REQUEST_METHOD'] !== "POST") {
+    homeidou();
     exit;
 }
 
@@ -20,6 +23,10 @@ if (empty($raw_emp_no)) {
     $_SESSION['emp_no_err'] = "従業員番号が空です。";
     // access($_SESSION['dept_no']);//まだセッションにdept_noなどが格納されていない
 }
+//　IDがint型か
+// if (!ctype_digit($raw_emp_no)) {
+//     $_SESSION['emp_no_err'] = "従業員番号に数字以外が入っています";
+// }
 
 // パスワードは空じゃないか
 $pass = $_POST['password'];
@@ -41,12 +48,12 @@ if (!empty($_SESSION['emp_no_err']) || !empty($_SESSION['pass_err'])) {
 
 try {
     // データべースと接続
-    $db = getPDO();
+    $pdo = getPDO();
 
     //社員IDで情報をとってくる
     $sql = "SELECT * FROM EMPLOYEE WHERE EMP_NO = :emp_no";
 
-    $stmt = $db->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     //bindValueで型が正しいか確認
     $stmt->bindValue(':emp_no', $raw_emp_no, PDO::PARAM_INT);
 
@@ -61,9 +68,7 @@ try {
         $_SESSION['logged_in'] = 1;
 
         //dept_no(部署)が１なら管理人の画面に遷移
-        $dept_no = $user['dept_no'];
-        if ($dept_no === 1) {
-            // $page = "manager";
+        if ($user['dept_no'] === 1) {
             nextpage("kanrisha");
         } else {
             //安否登録画面に遷移
@@ -79,6 +84,8 @@ try {
     }
     exit;
 } catch (PDOException $poe) {
+    
+    $_SESSION["login_db_err"] = "DBエラー" . $poe->getMessage();
     homeidou();
-    exit(); //開発時だけメッセージ表示
+    exit;//開発時だけメッセージ表示
 }
