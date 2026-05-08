@@ -132,9 +132,9 @@ try {
 
     //sql文
     $sql = "INSERT INTO EMPLOYEE (
-                        emp_no ,ename ,birthday ,sex ,tel ,address ,job_no ,dept_no ,password
-                    ) values (
-                        :emp_no ,:ename ,:birthday ,:sex ,:tel ,:address , :job_no, :dept_no ,:password)";
+                    emp_no ,ename ,birthday ,sex ,tel ,address ,job_no ,dept_no ,password
+                ) values (
+                    :emp_no ,:ename ,:birthday ,:sex ,:tel ,:address , :job_no, :dept_no ,:password)";
 
     $stmt = $pdo->prepare($sql); //sqlの準備
 

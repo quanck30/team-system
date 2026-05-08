@@ -24,7 +24,7 @@ if (empty($emp_no)) {
 }
 
 // パスワードは空じゃないか
-$pass = $_POST['password'];
+$pass = $_POST['password'] ?? "";
 if (empty($pass)) {
     $_SESSION['pass_err'] = "パスワードが空です。";
 }
@@ -85,12 +85,11 @@ try {
         //  PDOオブジェクトを破棄
         $stmt = null;
         $db = null;
-        //パスワードが間違ってたらHomeに遷移
     }
     exit;
 } catch (PDOException $poe) {
     
     $_SESSION["login_db_err"] = "DBエラー" . $poe->getMessage();
-    // homeidou();
+    homeidou();
     exit;//開発時だけメッセージ表示
 }
