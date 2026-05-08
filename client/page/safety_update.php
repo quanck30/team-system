@@ -18,7 +18,7 @@ if (!$safety) {
     header("Location: " . TEAM_SYSTEM . "/client/page/safetyList.php");
     exit;
 }
-if ($safety["emp_no"] != $emp_no) {
+if ($_SESSION["dept_no"] != 1 && $safety["emp_no"] != $emp_no) {
     $_SESSION["update_access_err"] = "更新権限が持ってない";
     header("Location: " . TEAM_SYSTEM . "/client/page/safetyList.php");
     exit;
