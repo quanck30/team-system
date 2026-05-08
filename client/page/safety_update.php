@@ -10,7 +10,7 @@ session_start();
 $emp_no = $_SESSION["emp_no"] ?? null;
 $safety_id = filter_input(INPUT_GET, "safety_id", FILTER_VALIDATE_INT);
 if (empty($emp_no) || empty($safety_id)) {
-    header("Location: " . TEAM_SYSTEM . "/client");
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
     exit;
 }
 $safety = get_safety($safety_id);

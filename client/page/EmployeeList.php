@@ -90,7 +90,7 @@ require_once __DIR__ . "/../../server/safety/safety_show.php";
     </section>
     <div class="bottom-links">
         <a href="kanrisha.php">戻る</a>
-        <a href="index.php">ログアウト</a>
+        <a href="http://localhost/team-system/client/index.php">ログアウト</a>
     </div>
 </body>
 

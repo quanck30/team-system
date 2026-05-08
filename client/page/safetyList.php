@@ -44,7 +44,6 @@ $all_safety = get_all_safety();
                     <?php if ($dept_no === 1): ?>
                         <th>削除</th>
                     <?php endif ?>
-                    <th>削除</th>
                 </tr>
             </thead>
 
@@ -64,21 +63,14 @@ $all_safety = get_all_safety();
                     </tr>
                 <?php endforeach ?>
 
-                        <td>
-                        <div class="delete">
-                            <a class="delete-btn" href="<?= "./delete.php?safety_id=" . $safety["safety_id"] ?>">削除</a>
-                        </div>
-</td>
-
-                    </tr>
-                <?php endforeach ?>
+                      
             </tbody>
         </table>
     </section>
 
     <div class="bottom-links">
         <a href="./touroku.php">戻る</a>
-        <a href="./index.php">ログアウト</a>
+       <a href="http://localhost/team-system/client/index.php">ログアウト</a>
     </div>
 
     <script src="./../js/safetyList.js"></script>

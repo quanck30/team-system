@@ -58,8 +58,8 @@ $safety = get_safety($safety_id);
         <?php endif; ?>
     </table>
  <div class="bottom-links">
-        <a href="./Home.php">戻る</a>
-        <a href="index.php">ログアウト</a>
+        <a href="./safetyList.php">戻る</a>
+        <a href="http://localhost/team-system/client/index.php">ログアウト</a>
 </div>
 </body>
 
