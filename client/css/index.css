@@ -45,7 +45,11 @@ label {
     margin-bottom: 6px;
 }
 
+/* /* <<<<<<< HEAD */
 input[type="text"],
+
+input[type="text"],
+
 input[type="password"] {
     width: 100%;
     padding: 10px;

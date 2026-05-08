@@ -56,14 +56,12 @@ $all_safety = get_all_safety();
                             <?= h($safety["status"]) ?>
                         </td>
                         <td><?= h($safety["can_work"]) ?></td>
-                        <td><a href=<?= "./safety_update.php?safety_id=" .h($safety["safety_id"]) ?>>編集</a></td>
+                        <td><a href="<?= "./safety_update.php?safety_id=" . h($safety["safety_id"]) ?>">編集</a></td>
                         <?php if ($dept_no === 1): ?>
-                            <td><a href=<?= "./delete.php?safety_id=" .h($safety["safety_id"]) ?>>削除</a></td>
+                            <td><a href=<?= "./delete.php?safety_id=" . h($safety["safety_id"]) ?>>削除</a></td>
                         <?php endif ?>
                     </tr>
                 <?php endforeach ?>
-
-                      
             </tbody>
         </table>
     </section>
