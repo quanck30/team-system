@@ -33,7 +33,7 @@ if (empty($_SESSION["emp_no"])) {
             <input type="radio" name="safety" value="1">無事
             <input type="radio" name="safety" value="2">軽傷
             <input type="radio" name="safety" value="3">重症
-            <input type="radio" name="safety" value="4">救助か必要
+            <input type="radio" name="safety" value="4">救助が必要
         </div>
         <div class="form">
             <label>出社は可能ですか？</label>
