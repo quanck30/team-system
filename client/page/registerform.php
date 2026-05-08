@@ -33,15 +33,17 @@ unset($_SESSION["register_err"]);
             <h2>社員登録</h2>
             <p class="subtitle">新しい社員情報を入力してください</p>
 
-            <?php if (!empty($register_err)): ?>
-                <p><?= $register_err ?></p>
-            <?php endif; ?>
+            <div>
+                <?php if (!empty($register_err)): ?>
+                    <p><?= $register_err ?></p>
+                <?php endif; ?>
 
-            <?php if (!empty($erres)): ?>
-                <?php foreach ((array)$erres as $err): ?>
-                    <p><?= $err ?></p>
-                <?php endforeach; ?>
-            <?php endif ?>
+                <?php if (!empty($erres)): ?>
+                    <?php foreach ((array)$erres as $err): ?>
+                        <p><?= $err ?></p>
+                    <?php endforeach; ?>
+                <?php endif ?>
+            </div>
 
             <form action="../../server/emp_register.php" method="post">
 
