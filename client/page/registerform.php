@@ -11,9 +11,10 @@ if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] !== 1) {
 
 $erres = $_SESSION["erres"] ?? "";
 $register_err = $_SESSION["register_err"] ?? "";
+$old_inputs = $_SESSION["old_inputs"] ?? "";
 unset($_SESSION["erres"]);
 unset($_SESSION["register_err"]);
-
+unset($_SESSION["old_inputs"]);
 
 ?>
 <!DOCTYPE html>
@@ -49,72 +50,62 @@ unset($_SESSION["register_err"]);
 
                 <div class="form-group">
                     <label>社員番号</label>
-                    <input name="emp_no" type="text" placeholder="例: 20260001" required>
+                    <input name="emp_no" type="text" value="<?= $old_inputs["emp_no"] ?? "" ?>" placeholder="例: 20260001" required>
                 </div>
 
                 <div class="form-group">
                     <label>苗字</label>
-                    <input name="Lname" type="text" placeholder="例: 山田" required>
+                    <input name="Lname" type="text" value="<?= $old_inputs["Lname"] ?? "" ?>" placeholder=" 例: 山田" required>
                 </div>
 
                 <div class="form-group">
                     <label>名前</label>
-                    <input name="Fname" type="text" placeholder="例: 太郎" required>
+                    <input name="Fname" type="text" value="<?= $old_inputs["Fname"] ?? "" ?>" placeholder=" 例: 太郎" required>
                 </div>
 
                 <div class="form-group">
                     <label>生年月日</label>
-                    <input name="birthday" type="date" required>
+                    <input name="birthday" value="<?= $old_inputs["birthday"] ?? "" ?>" type="date" required>
                 </div>
 
                 <div class="form-group">
                     <label>性別</label>
                     <select name="sex" required>
                         <option value="">選択してください</option>
-                        <option value="M">男性</option>
-                        <option value="F">女性</option>
+                        <option value="M" <?= (isset($old_inputs["sex"]) && $old_inputs["sex"] === 'M') ? 'selected' : ''?>>男性</option>
+                        <option value="F" <?= (isset($old_inputs["sex"]) && $old_inputs["sex"] === 'F') ? 'selected' : '' ?>>女性</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>電話番号</label>
-                    <input name="tel" type="text" placeholder="例: 000-0000-0000" required>
+                    <input name="tel" type="text" value="<?= $old_inputs["tel"] ?? "" ?>" placeholder=" 例: 000-0000-0000" required>
                 </div>
 
                 <div class="form-group">
                     <label>住所</label>
-                    <input name="address" type="text" required>
+                    <input name="address" value="<?= $old_inputs["address"] ?? "" ?>" type="text" required>
                 </div>
 
                 <div class="form-group">
                     <label>職種</label>
                     <select name="job_no" required>
-                        <option value="1">システムエンジニア</option>
-                        <option value="2">WEBデザイナー</option>
-                        <option value="3">カスタマーサポート</option>
-                        <option value="4">業務員</option>
+                        <option value="1" <?= (isset($old_inputs["job_no"]) && $old_inputs["job_no"] === '1') ? 'selected' : '' ?>>システムエンジニア</option>
+                        <option value="2" <?= (isset($old_inputs["job_no"]) && $old_inputs["job_no"] === '2') ? 'selected' : '' ?>>WEBデザイナー</option>
+                        <option value="3" <?= (isset($old_inputs["job_no"]) && $old_inputs["job_no"] === '3') ? 'selected' : '' ?>>カスタマーサポート</option>
+                        <option value="4" <?= (isset($old_inputs["job_no"]) && $old_inputs["job_no"] === '4') ? 'selected' : '' ?>>業務員</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>部署</label>
                     <select name="dept_no" required>
-                        <option value="1">管理部</option>
-                        <option value="2">営業部</option>
-                        <option value="3">開発部</option>
-                        <option value="4">総務部</option>
+                        <option value="1" <?= (isset($old_inputs["dept_no"]) && $old_inputs["dept_no"] === '1') ? 'selected' : '' ?>>管理部</option>
+                        <option value="2" <?= (isset($old_inputs["dept_no"]) && $old_inputs["dept_no"] === '2') ? 'selected' : '' ?>>営業部</option>
+                        <option value="3" <?= (isset($old_inputs["dept_no"]) && $old_inputs["dept_no"] === '3') ? 'selected' : '' ?>>開発部</option>
+                        <option value="4" <?= (isset($old_inputs["dept_no"]) && $old_inputs["dept_no"] === '4') ? 'selected' : '' ?>>総務部</option>
                     </select>
                 </div>
-
-                <!-- <div class="form-group">
-                    <label>管理番号</label>
-                    <select name="mgr_no" required>
-                        <option value="1">E001</option>
-                        <option value="2">E002</option>
-                        <option value="3">E003</option>
-                        <option value="4">E004</option>
-                    </select>
-                </div> -->
 
                 <div class="form-group">
                     <label>パスワード</label>

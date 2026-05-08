@@ -113,6 +113,8 @@ if (strlen($inputs["tel"]) !== 11) {
 }
 $inputs["tel"] = preg_replace('/(\d{3})(\d{4})(\d{4})/', '$1-$2-$3', $inputs["tel"]);
 
+//sessionに入力した値を保存
+$_SESSION["old_inputs"] = $inputs;
 
 if(!empty($errors)){
     $_SESSION['erres'] = $errors;
