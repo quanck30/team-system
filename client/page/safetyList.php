@@ -68,7 +68,7 @@ $all_safety = get_all_safety();
 
     <div class="bottom-links">
         <a href="./touroku.php">戻る</a>
-        <a href="./index.php">ログアウト</a>
+       <a href="http://localhost/team-system/client/index.php">ログアウト</a>
     </div>
 
     <script src="./../js/safetyList.js"></script>

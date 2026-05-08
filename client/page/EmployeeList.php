@@ -99,6 +99,7 @@ $users = get_info();
     </section>
     <div class="bottom-links">
         <a href="kanrisha.php">戻る</a>
+        <a href="http://localhost/team-system/client/index.php">ログアウト</a>
     </div>
 </body>
 
