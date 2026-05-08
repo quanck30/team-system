@@ -8,11 +8,15 @@ require_once __DIR__ . "/../../helpers/utils.php";
 require_once __DIR__ . "/../../helpers/function.php";
 $dept_no = $_SESSION["dept_no"] ?? 0;
 $update_access_err = $_SESSION["update_access_err"] ?? "";
+$safety_update_err = $_SESSION["safety_update_err"] ?? "";
+$safety_update_success = $_SESSION["safety_update_success"] ?? "";
 if (empty($_SESSION["emp_no"])) {
     header("Location: " . TEAM_SYSTEM . "/client/index.php");
     exit;
 }
 unset($_SESSION["update_access_err"]);
+unset($_SESSION["safety_update_err"]);
+unset($_SESSION["safety_update_success"]);
 $all_safety = get_all_safety();
 ?>
 
@@ -78,8 +82,16 @@ $all_safety = get_all_safety();
     <script src="./../js/safetyList.js"></script>
     <script>
         const updateAccessErr = <?= json_encode($update_access_err) ?>;
+        const safetyUpdateErr = <?= json_encode($safety_update_err) ?>;
+        const safetyUpdateSuccess = <?= json_encode($safety_update_success) ?>;
         if (updateAccessErr) {
             alert(updateAccessErr);
+        }
+        if (safetyUpdateErr) {
+            alert(safetyUpdateErr);
+        }
+        if (safetyUpdateSuccess) {
+            alert(safetyUpdateSuccess);
         }
     </script>
 </body>

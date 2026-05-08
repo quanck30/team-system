@@ -28,6 +28,7 @@ if (empty($_SESSION["emp_no"])) {
         <div class="title">
             <h2>安否確認</h2>
         </div>
+
         <div class="form">
             <label>　安否状況</label>
             <input type="radio" name="safety" value="1">無事
@@ -53,10 +54,9 @@ if (empty($_SESSION["emp_no"])) {
                 <div class="form-row">
 
             </label>
-            <textarea name="name" class="form-input"
+            <textarea name="comment" class="form-input"
                 placeholder="例）けがあり"
                 required></textarea>
-
         </div>
 
         <input type="submit" value="送信">
@@ -66,9 +66,6 @@ if (empty($_SESSION["emp_no"])) {
         </div>
     </form>
 
-    </div>
-
-    <!-- <a href="safetyList.php">社員安否一覧画面</a> -->
 </body>
 
 </html>

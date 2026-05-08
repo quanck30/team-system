@@ -23,6 +23,7 @@ if ($_SESSION["dept_no"] != 1 && $safety["emp_no"] != $emp_no) {
     header("Location: " . TEAM_SYSTEM . "/client/page/safetyList.php");
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +47,7 @@ if ($_SESSION["dept_no"] != 1 && $safety["emp_no"] != $emp_no) {
         <div class="title">
             <h2>安否確認</h2>
         </div>
+        <input type="hidden" name="emp_no" value="<?= h($safety['emp_no']) ?>">
         <div class="form">
             <label>安否状況</label>
             <input type="radio" name="safety" value="1" <?= ($safety["status_id"] === 1) ? "checked" : "" ?>>無事
