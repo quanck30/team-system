@@ -12,5 +12,12 @@ $_SESSION = [];
 if (isset($_COOKIE[session_name()])) {
     setcookie(session_name(), '', time() - 999999, '/');
 }
+//サーバー側のセッションデータを破棄
+session_destroy();
+
 //index.php(ホーム画面)に遷移
-homeidou();
+if(empty($_SESSION)){
+    homeidou();
+} else {
+    echo "エラーが発生しました。";
+}

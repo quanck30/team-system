@@ -3,6 +3,8 @@
 // 2026・04・21
 // require_once __DIR__ . "/../../server/safety/safety_show.php";
 require_once __DIR__ . "/../../server/emp_list.php";
+require_once __DIR__ . "/../../helpers/def.php";
+
 // session_start();//emp.list.php側で呼び出してるからいらない
 // 管理者かどうか
 if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] !== 1) {
@@ -97,7 +99,6 @@ $users = get_info();
     </section>
     <div class="bottom-links">
         <a href="kanrisha.php">戻る</a>
-        <a href="index.php">ログアウト</a>
     </div>
 </body>
 

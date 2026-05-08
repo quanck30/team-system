@@ -53,8 +53,8 @@
     
       <input type="submit" value="送信">
     <div class="bottom-links">
-        <a href="./Home.php">戻る</a>
-        <a href="index.php">ログアウト</a>
+        <a href="../index.php">戻る</a>
+        <a href="logout.php">ログアウト</a>
     </div>
     </form>
 
