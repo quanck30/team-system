@@ -137,10 +137,5 @@ td[data-status="救助が必要"] {
     color: #8e44ad; 
     font-weight: bold;
 }
-/* スマホ対応 */
-@media (max-width:767px) {
-    .row{
-        flex-direction: column;
-    }
-}
+
 

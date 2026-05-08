@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS job(
 CREATE TABLE IF NOT EXISTS department(
     dept_no INT AUTO_INCREMENT PRIMARY KEY,
     dname VARCHAR(50),
-    mgr_no VARCHAR(5)
+    mgr_no VARCHAR(50)
 );
 CREATE TABLE IF NOT EXISTS status(
     status_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS canwork(
     can_work VARCHAR(50)
 );
 CREATE TABLE IF NOT EXISTS employee (
-    emp_no VARCHAR(5) PRIMARY KEY,
+    emp_no VARCHAR(50) PRIMARY KEY,
     ename VARCHAR(50) NOT NULL,
     birthday DATE,
     sex VARCHAR(1),
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS employee (
 
 CREATE TABLE IF NOT EXISTS safety (
     safety_id INT AUTO_INCREMENT PRIMARY KEY,
-    emp_no VARCHAR(5) ,
+    emp_no VARCHAR(50) ,
     status_id INT NOT NULL,
     comment VARCHAR(255) ,
     current_location VARCHAR(255),

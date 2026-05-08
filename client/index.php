@@ -1,11 +1,25 @@
 <?php
 // ログイン画面処理
 require_once __DIR__ . "/../helpers/utils.php";
+require_once __DIR__ . "/../helpers/function.php";
 session_start();
+$login_db_err = $_SESSION["login_db_err"] ?? "";
 $emp_no_err = $_SESSION["emp_no_err"] ?? "";
 $pass_err = $_SESSION["pass_err"] ?? "";
+$emp_err = $_SESSION["emp_err"] ?? "";
+$login_err = $_SESSION["login_err"] ?? "";
 unset($_SESSION["emp_no_err"]);
 unset($_SESSION["pass_err"]);
+unset($_SESSION["emp_err"]);
+unset($_SESSION["login_db_err"]);
+if (!empty($_SESSION["emp_no"])) {
+    if ($_SESSION['dept_no'] === 1) {
+        nextpage("kanrisha");
+    } else {
+        //安否登録画面に遷移
+        nextpage("touroku");
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +40,8 @@ unset($_SESSION["pass_err"]);
             <input id="emp_no" name="emp_no" placeholder="＜例＞20260001" type="text">
             <?php if (!empty($emp_no_err)): ?>
                 <p><?= h($emp_no_err) ?></p>
-            <?php else: ?>
-                <p></p>
+            <?php elseif (!empty($emp_err)): ?>
+                <p><?= $emp_err ?></p>
             <?php endif; ?>
         </div>
         <div>
@@ -37,6 +51,14 @@ unset($_SESSION["pass_err"]);
                 <p><?= h($pass_err) ?></p>
             <?php else: ?>
                 <p></p>
+            <?php endif; ?>
+        </div>
+        <div>
+            <?php if (!empty($login_db_err)): ?>
+                <p><?= h($login_db_err) ?></p>
+            <?php endif; ?>
+            <?php if (!empty($login_err)): ?>
+                <p><?= h($login_err) ?></p>
             <?php endif; ?>
         </div>
         <button type="submit">ログイン</button>

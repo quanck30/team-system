@@ -8,6 +8,10 @@ require_once __DIR__ . "/../../helpers/utils.php";
 require_once __DIR__ . "/../../helpers/function.php";
 $dept_no = $_SESSION["dept_no"] ?? 0;
 $update_access_err = $_SESSION["update_access_err"] ?? "";
+if (empty($_SESSION["emp_no"])) {
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
+    exit;
+}
 unset($_SESSION["update_access_err"]);
 $all_safety = get_all_safety();
 ?>
@@ -20,9 +24,7 @@ $all_safety = get_all_safety();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社員安否一覧画面</title>
     <link rel="stylesheet" href="./../css/safetyList.css">
-    <!-- スマホ対応 -->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-</head>
+    
 
 <body>
     <header>
@@ -58,21 +60,19 @@ $all_safety = get_all_safety();
                             <?= h($safety["status"]) ?>
                         </td>
                         <td><?= h($safety["can_work"]) ?></td>
-                        <td><a href=<?= "./safety_update.php?safety_id=" .h($safety["safety_id"]) ?>>編集</a></td>
+                        <td><a href="<?= "./safety_update.php?safety_id=" . h($safety["safety_id"]) ?>">編集</a></td>
                         <?php if ($dept_no === 1): ?>
-                            <td><a href=<?= "./delete.php?safety_id=" .h($safety["safety_id"]) ?>>削除</a></td>
+                            <td><a href=<?= "./delete.php?safety_id=" . h($safety["safety_id"]) ?>>削除</a></td>
                         <?php endif ?>
                     </tr>
                 <?php endforeach ?>
-
-                      
             </tbody>
         </table>
     </section>
 
     <div class="bottom-links">
         <a href="./touroku.php">戻る</a>
-       <a href="http://localhost/team-system/client/index.php">ログアウト</a>
+        <a href="./../../server/logout.php">ログアウト</a>
     </div>
 
     <script src="./../js/safetyList.js"></script>
