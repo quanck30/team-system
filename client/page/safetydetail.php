@@ -57,10 +57,10 @@ $safety = get_safety($safety_id);
             </tr>
         <?php endif; ?>
     </table>
- <div class="bottom-links">
+    <div class="bottom-links">
         <a href="./safetyList.php">戻る</a>
-        <a href="http://localhost/team-system/client/index.php">ログアウト</a>
-</div>
+        <a href="./../../server/logout.php">ログアウト</a>
+    </div>
 </body>
 
 </html>

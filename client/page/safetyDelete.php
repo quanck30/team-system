@@ -1,11 +1,18 @@
 <?php
+require_once __DIR__ . "/../../helpers/def.php";
+session_start();
 // 削除確認
 $safety_id = filter_input(INPUT_GET, "safety_id", FILTER_VALIDATE_INT);
-//　管理者かどうか
-if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] !== 1) {
-    header("Location: " . TEAM_SYSTEM . "/client/page/index.php");
+if (empty($_SESSION["emp_no"])) {
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
     exit;
 }
+//　管理者かどうか
+if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] != 1) {
+    header("Location: " . TEAM_SYSTEM . "/client/page/safetyList.php");
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
