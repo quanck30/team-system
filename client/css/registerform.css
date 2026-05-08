@@ -111,3 +111,10 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.err {
+    color: red;
+    font-weight: bold;
+}
+
+
