@@ -8,7 +8,7 @@ require_once __DIR__ . "/../helpers/utils.php";
 
 $employees = [
     [
-        'emp_no' => 'E0001',
+        'emp_no' => '20260001',
         'ename' => '田中 太郎',
         'birthday' => '1985-05-20',
         'sex' => 'M',
@@ -18,7 +18,7 @@ $employees = [
         'dept_no' => 1
     ],
     [
-        'emp_no' => 'E0002',
+        'emp_no' => '20260002',
         'ename' => '佐藤 美紀',
         'birthday' => '1992-11-10',
         'sex' => 'F',
@@ -28,7 +28,7 @@ $employees = [
         'dept_no' => 2
     ],
     [
-        'emp_no' => 'E0003',
+        'emp_no' => '20260003',
         'ename' => '鈴木 一郎',
         'birthday' => '1978-03-15',
         'sex' => 'M',
@@ -38,7 +38,7 @@ $employees = [
         'dept_no' => 3
     ],
     [
-        'emp_no' => 'E0004',
+        'emp_no' => '20260004',
         'ename' => '高橋 健一',
         'birthday' => '1980-07-22',
         'sex' => 'M',
@@ -48,7 +48,7 @@ $employees = [
         'dept_no' => 4
     ],
     [
-        'emp_no' => 'E0005',
+        'emp_no' => '20260005',
         'ename' => '伊藤 あおい',
         'birthday' => '1995-12-05',
         'sex' => 'F',
@@ -58,7 +58,7 @@ $employees = [
         'dept_no' => 3
     ],
     [
-        'emp_no' => 'E0006',
+        'emp_no' => '20260006',
         'ename' => '渡辺 誠',
         'birthday' => '1988-09-18',
         'sex' => 'M',
@@ -68,7 +68,7 @@ $employees = [
         'dept_no' => 2
     ],
     [
-        'emp_no' => 'E0007',
+        'emp_no' => '20260007',
         'ename' => '中村 結衣',
         'birthday' => '1993-04-30',
         'sex' => 'F',
@@ -78,7 +78,7 @@ $employees = [
         'dept_no' => 3
     ],
     [
-        'emp_no' => 'E0008',
+        'emp_no' => '20260008',
         'ename' => '小林 裕太',
         'birthday' => '1982-11-12',
         'sex' => 'M',
@@ -88,7 +88,7 @@ $employees = [
         'dept_no' => 2
     ],
     [
-        'emp_no' => 'E0009',
+        'emp_no' => '20260009',
         'ename' => '加藤 陽子',
         'birthday' => '1975-06-08',
         'sex' => 'F',
@@ -100,22 +100,22 @@ $employees = [
 ];
 
 $managers = [
-    ['mgr_no' => 'E0001', 'dept_no' => 1],
-    ['mgr_no' => 'E0002', 'dept_no' => 2],
-    ['mgr_no' => 'E0003', 'dept_no' => 3],
-    ['mgr_no' => 'E0004', 'dept_no' => 4],
+    ['mgr_no' => '20260001', 'dept_no' => 1],
+    ['mgr_no' => '20260002', 'dept_no' => 2],
+    ['mgr_no' => '20260003', 'dept_no' => 3],
+    ['mgr_no' => '20260004', 'dept_no' => 4],
 ];
 
 $safeties = [
-    ['emp_no' => 'E0001', 'status_id' => 1, 'comment' => '家族全員無事です。避難所にいます。', 'location' => '代々木公園避難所', 'can_work_no' => 1, 'create_at' => '2026-04-30 10:43:07'],
-    ['emp_no' => 'E0002', 'status_id' => 2, 'comment' => '足に軽い怪我をしましたが、歩けます。', 'location' => '自宅', 'can_work_no' => 2, 'create_at' => '2026-04-30 10:43:07'],
-    ['emp_no' => 'E0003', 'status_id' => 1, 'comment' => '外出中でしたが、怪我はありません。', 'location' => '品川駅付近', 'can_work_no' => 3, 'create_at' => '2026-04-30 10:43:07'],
-    ['emp_no' => 'E0004', 'status_id' => 1, 'comment' => '会社にいます。備蓄食料を確認中です。', 'location' => '本社ビル3F', 'can_work_no' => 1, 'create_at' => '2026-04-30 11:15:20'],
-    ['emp_no' => 'E0005', 'status_id' => 3, 'comment' => '家財が倒れて動けません。助けを待っています。', 'location' => '世田谷区アパート', 'can_work_no' => 3, 'create_at' => '2026-04-30 11:20:45'],
-    ['emp_no' => 'E0006', 'status_id' => 2, 'comment' => '電車の中で立ち往生しています。復旧待ち。', 'location' => '新宿駅構内', 'can_work_no' => 2, 'create_at' => '2026-04-30 11:30:10'],
-    ['emp_no' => 'E0007', 'status_id' => 1, 'comment' => '近所の消火活動を手伝っています。午後から在宅可。', 'location' => '実家(中野区)', 'can_work_no' => 2, 'create_at' => '2026-04-30 11:45:00'],
-    ['emp_no' => 'E0008', 'status_id' => 4, 'comment' => '怪我人がいます。至急救急車を呼びたいが繋がりません。', 'location' => '渋谷交差点付近', 'can_work_no' => 3, 'create_at' => '2026-04-30 11:55:12'],
-    ['emp_no' => 'E0009', 'status_id' => 1, 'comment' => '通信環境が悪いため、取り急ぎ無事のみ報告します。', 'location' => '不明(移動中)', 'can_work_no' => 1, 'create_at' => '2026-04-30 12:05:30'],
+    ['emp_no' => '20260001', 'status_id' => 1, 'comment' => '家族全員無事です。避難所にいます。', 'location' => '代々木公園避難所', 'can_work_no' => 1],
+    ['emp_no' => '20260002', 'status_id' => 2, 'comment' => '足に軽い怪我をしましたが、歩けます。', 'location' => '自宅', 'can_work_no' => 2],
+    ['emp_no' => '20260003', 'status_id' => 1, 'comment' => '外出中でしたが、怪我はありません。', 'location' => '品川駅付近', 'can_work_no' => 3],
+    ['emp_no' => '20260004', 'status_id' => 1, 'comment' => '会社にいます。備蓄食料を確認中です。', 'location' => '本社ビル3F', 'can_work_no' => 1],
+    ['emp_no' => '20260005', 'status_id' => 3, 'comment' => '家財が倒れて動けません。助けを待っています。', 'location' => '世田谷区アパート', 'can_work_no' => 3],
+    ['emp_no' => '20260006', 'status_id' => 2, 'comment' => '電車の中で立ち往生しています。復旧待ち。', 'location' => '新宿駅構内', 'can_work_no' => 2],
+    ['emp_no' => '20260007', 'status_id' => 1, 'comment' => '近所の消火活動を手伝っています。午後から在宅可。', 'location' => '実家(中野区)', 'can_work_no' => 2],
+    ['emp_no' => '20260008', 'status_id' => 4, 'comment' => '怪我人がいます。至急救急車を呼びたいが繋がりません。', 'location' => '渋谷交差点付近', 'can_work_no' => 3],
+    ['emp_no' => '20260009', 'status_id' => 1, 'comment' => '通信環境が悪いため、取り急ぎ無事のみ報告します。', 'location' => '不明(移動中)', 'can_work_no' => 1],
 ];
 $pdo = getPDO();
 try {
@@ -145,8 +145,8 @@ try {
         ]);
     }
 
-    // // =====================
-    // // 2. UPDATE manager
+    // =====================
+    // 2. UPDATE manager
     // =====================
     $stmtMgr = $pdo->prepare("
         UPDATE department 

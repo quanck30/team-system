@@ -8,6 +8,10 @@ require_once __DIR__ . "/../../helpers/utils.php";
 require_once __DIR__ . "/../../helpers/function.php";
 $dept_no = $_SESSION["dept_no"] ?? 0;
 $update_access_err = $_SESSION["update_access_err"] ?? "";
+if (empty($_SESSION["emp_no"])) {
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
+    exit;
+}
 unset($_SESSION["update_access_err"]);
 $all_safety = get_all_safety();
 ?>
@@ -68,7 +72,7 @@ $all_safety = get_all_safety();
 
     <div class="bottom-links">
         <a href="./touroku.php">戻る</a>
-       <a href="http://localhost/team-system/client/index.php">ログアウト</a>
+        <a href="./../../server/logout.php">ログアウト</a>
     </div>
 
     <script src="./../js/safetyList.js"></script>

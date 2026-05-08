@@ -1,3 +1,11 @@
+<?php
+require_once __DIR__ . "/../../helpers/def.php";
+session_start();
+if (empty($_SESSION["emp_no"])) {
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -14,7 +22,7 @@
     <header>
         <h1>登録画面</h1>
     </header>
-    
+
     <form action="./../../server/safety/safety_create.php" method="post">
 
         <div class="title">
@@ -41,21 +49,21 @@
 
         コメント
         <div class="form-group horizpntal-layout">
-        <label class="form-label">
-        <div class="form-row">
-        
-        </label>
-        <textarea name="name" class="form-input"
-        placeholder="例）けがあり"
-        required></textarea>
-        
-               </div>
-    
-      <input type="submit" value="送信">
-    <div class="bottom-links">
-        <a href="./index.php">戻る</a>
-        <a href="http://localhost/team-system/client/index.php">ログアウト</a>
-    </div>
+            <label class="form-label">
+                <div class="form-row">
+
+            </label>
+            <textarea name="name" class="form-input"
+                placeholder="例）けがあり"
+                required></textarea>
+
+        </div>
+
+        <input type="submit" value="送信">
+        <div class="bottom-links">
+            <a href="./safetyList.php">安否一覧</a>
+            <a href="./../../server/logout.php">ログアウト</a>
+        </div>
     </form>
 
     </div>

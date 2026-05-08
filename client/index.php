@@ -1,6 +1,7 @@
 <?php
 // ログイン画面処理
 require_once __DIR__ . "/../helpers/utils.php";
+require_once __DIR__ . "/../helpers/function.php";
 session_start();
 $login_db_err = $_SESSION["login_db_err"] ?? "";
 $emp_no_err = $_SESSION["emp_no_err"] ?? "";
@@ -11,6 +12,14 @@ unset($_SESSION["emp_no_err"]);
 unset($_SESSION["pass_err"]);
 unset($_SESSION["emp_err"]);
 unset($_SESSION["login_db_err"]);
+if (!empty($_SESSION["emp_no"])) {
+    if ($_SESSION['dept_no'] === 1) {
+        nextpage("kanrisha");
+    } else {
+        //安否登録画面に遷移
+        nextpage("touroku");
+    }
+}
 ?>
 
 <!DOCTYPE html>
