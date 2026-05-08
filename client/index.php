@@ -12,7 +12,6 @@ unset($_SESSION["emp_no_err"]);
 unset($_SESSION["pass_err"]);
 unset($_SESSION["emp_err"]);
 unset($_SESSION["login_db_err"]);
-<<<<<<< HEAD
 if (!empty($_SESSION["emp_no"])) {
     if ($_SESSION['dept_no'] === 1) {
         nextpage("kanrisha");
@@ -21,8 +20,6 @@ if (!empty($_SESSION["emp_no"])) {
         nextpage("touroku");
     }
 }
-=======
->>>>>>> 0d50fb5c4a2fc737fc8e31c73ff9d77c4d1ab245
 ?>
 
 <!DOCTYPE html>
