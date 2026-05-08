@@ -8,7 +8,11 @@ require_once __DIR__ . "/../../helpers/def.php";
 // session_start();//emp.list.php側で呼び出してるからいらない
 // 管理者かどうか
 if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] !== 1) {
+<<<<<<< HEAD
     header("Location: " . TEAM_SYSTEM . "/client/index.php");
+=======
+    header("Location: " . TEAM_SYSTEM . "/client/page/index.php");
+>>>>>>> 0d50fb5c4a2fc737fc8e31c73ff9d77c4d1ab245
     exit;
 }
 
@@ -36,11 +40,18 @@ $users = get_info();
             <h1>社員一覧画面</h1>
         </div>
     </header>
-
+    
     <?php if (isset($db_err)): ?>
         <p><?= h($db_err) ?></p>
     <?php endif; ?>
 
+<<<<<<< HEAD
+    <?php if (isset($db_err)): ?>
+        <p><?= h($db_err) ?></p>
+    <?php endif; ?>
+
+=======
+>>>>>>> 0d50fb5c4a2fc737fc8e31c73ff9d77c4d1ab245
     <h2>社員一覧表示</h2>
     <div class="bottom-links">
         <a href="registerform.php">新規登録</a>
@@ -68,9 +79,40 @@ $users = get_info();
                         <th><a href="detail.php">詳細</a></th>
                     </tr>
                 <?php endforeach ?>
+<<<<<<< HEAD
             </tbody>
 
         </table>
+=======
+                <tr>
+                    <td>20260304</td>
+                    <td>佐藤太郎</td>
+                    <td>大阪市店</td>
+                    <td>大阪府大阪市</td>
+                </tr>
+                <tr>
+                    <td>20260304</td>
+                    <td>佐藤太郎</td>
+                    <td>大阪市店</td>
+                    <td>大阪府大阪市</td>
+                </tr>
+                <tr>
+                    <td>20260304</td>
+                    <td>佐藤太郎</td>
+                    <td>大阪市店</td>
+                    <td>大阪府大阪市</td>
+                </tr>
+                <tr>
+                    <td>20260304</td>
+                    <td>佐藤太郎</td>
+                    <td>大阪市店</td>
+                    <td>大阪府大阪市</td>
+                </tr>
+            </tbody>
+
+        </table>
+        <!-- <?php echo $emp_no  ?><br>  -->
+>>>>>>> 0d50fb5c4a2fc737fc8e31c73ff9d77c4d1ab245
     </section>
     <div class="bottom-links">
         <a href="kanrisha.php">戻る</a>
