@@ -41,10 +41,6 @@ $users = get_info();
         <p><?= h($db_err) ?></p>
     <?php endif; ?>
 
-    <?php if (isset($db_err)): ?>
-        <p><?= h($db_err) ?></p>
-    <?php endif; ?>
-
     <h2>社員一覧表示</h2>
     <div class="bottom-links">
         <a href="registerform.php">新規登録</a>
