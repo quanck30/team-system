@@ -30,7 +30,6 @@ $safety = get_safety($safety_id);
         <h1>安否詳細画面</h1>
     </header>
     <!-- 一覧表示 -->
-    <p><?= h($safety["ename"]) ?></p>
     <table>
         <tr>
             <th>社員番号</th>

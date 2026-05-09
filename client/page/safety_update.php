@@ -44,9 +44,12 @@ if ($_SESSION["dept_no"] != 1 && $safety["emp_no"] != $emp_no) {
     </header>
     <form action="./../../server/safety/safety_update.php" method="post">
 
-        <div class="title">
+        <div class="title" id="ename">
             <h2>安否確認</h2>
+            <p>名前：　 <?= h($safety["ename"]) ?></p>
         </div>
+
+
         <input type="hidden" name="emp_no" value="<?= h($safety['emp_no']) ?>">
         <div class="form">
             <label>安否状況</label>
