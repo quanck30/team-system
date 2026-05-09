@@ -8,13 +8,14 @@ if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] !== 1) {
     header("Location: " . TEAM_SYSTEM . "/client/index.php");
     exit;
 }
-
+$pass_err = $_SESSION["pass_err"] ?? "";
 $erres = $_SESSION["erres"] ?? "";
 $register_err = $_SESSION["register_err"] ?? "";
 $old_inputs = $_SESSION["old_inputs"] ?? "";
 unset($_SESSION["erres"]);
 unset($_SESSION["register_err"]);
 unset($_SESSION["old_inputs"]);
+unset($_SESSION["pass_err"]);
 
 ?>
 <!DOCTYPE html>
@@ -36,12 +37,12 @@ unset($_SESSION["old_inputs"]);
 
             <div>
                 <?php if (!empty($register_err)): ?>
-                    <p><?= $register_err ?></p>
+                    <p class="err_message"><?= $register_err ?></p>
                 <?php endif; ?>
 
                 <?php if (!empty($erres)): ?>
                     <?php foreach ((array)$erres as $err): ?>
-                        <p><?= $err ?></p>
+                        <p class="err_message"><?= $err ?></p>
                     <?php endforeach; ?>
                 <?php endif ?>
             </div>
@@ -111,6 +112,9 @@ unset($_SESSION["old_inputs"]);
                     <label>パスワード</label>
                     <input name="password" type="password" required>
                 </div>
+                <?php if (!empty($pass_err)): ?>
+                    <p class="err_message"><?= $pass_err ?></p>
+                <?php endif; ?>
 
                 <div class="form-group">
                     <label>パスワード確認</label>
@@ -121,8 +125,8 @@ unset($_SESSION["old_inputs"]);
 
             </form>
 
-            <p><a href="../index.php">ログインに戻る</a></p>
             <p><a href="kanrisha.php">管理者画面</a></p>
+            <p><a href="../../server/logout.php">ログアウト</a></p>
 
         </div>
     </div>
