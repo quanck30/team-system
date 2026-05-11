@@ -27,6 +27,14 @@ unset($_SESSION["register_err"]);
 </head>
 
 <body>
+    <?php if (!empty($erres)) : ?>
+    <p class="err"><?= $erres ?></p>
+    <?php endif; ?>
+
+    <?php if (!empty($register_err)) : ?>
+    <p class="err"><?= $register_err ?></p>
+<?php endif; ?>
+
 
     <div class="wrapper">
         <div class="container">
