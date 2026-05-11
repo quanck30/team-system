@@ -8,6 +8,14 @@ body {
     line-height: 1.6;
 }
 
+.err_message {
+    color: red ;
+    font-size: 0.85rem;
+    /* margin: 4px 0 0; */
+    /* height: 16px; */
+    /* レイアウトがズレないように固定 */
+}
+
 /* Center layout */
 .wrapper {
     min-height: 100vh;

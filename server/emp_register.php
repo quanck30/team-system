@@ -53,6 +53,7 @@ $info_fields = [
 ];
 
 $errors = [];
+$pass_err = "";
 
 // echo "trim前";
 // foreach($inputs as $info){
@@ -89,21 +90,20 @@ if(strlen($inputs['emp_no']) !== 8){
     $errors[] = "社員番号は8桁にしてください。";
 }
 
-//英数字混合か判断 preg_matchは英数字が含まれてたら1 含まれていなかったら0を返す
-if (preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', $inputs['password']) === 0) {
-    $errors[] = "パスワードは英数字混合にしてください。";
+
+//パスワードが再確認用のパスワードと同じかどうか
+if ($inputs['password'] !== $inputs['confirm_password']) {
+    $pass_err = "パスワードが違います。";
 }
 
 //パスワードが8文字以上か
 if (strlen($inputs['password']) <= 7) {
-    $errors[] = "パスワードを8文字以上に設定してください。";
+    $pass_err = "パスワードを8文字以上に設定してください。";
 }
 
-//パスワードが再確認用のパスワードと同じかどうか
-if ($inputs['password'] !== $inputs['confirm_password']) {
-    $errors[] = "パスワードが違います。";
+if (!preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/', $inputs["password"])) {
+    $pass_err = "パスワードは英数字混合にしてください。";
 }
-
 
 //電話番号の形式があっているか(000 1111 2222) ← 〇 (0000 1111 2222) ← ✖
 $inputs["tel"] = str_replace(["-", " ", "　"], "", $inputs["tel"]);
@@ -113,9 +113,12 @@ if (strlen($inputs["tel"]) !== 11) {
 }
 $inputs["tel"] = preg_replace('/(\d{3})(\d{4})(\d{4})/', '$1-$2-$3', $inputs["tel"]);
 
+//sessionに入力した値を保存
+$_SESSION["old_inputs"] = $inputs;
 
-if(!empty($errors)){
+if(!empty($errors) || !empty($pass_err)){
     $_SESSION['erres'] = $errors;
+    $_SESSION["pass_err"] = $pass_err;
     nextpage("registerform");
     // echo "エラー";//debug用
     exit;
@@ -160,7 +163,7 @@ try {
     nextpage("registerComplete");
 } catch (PDOException $poe) {
     $pdo->rollback();
-    $_SESSION['register_err'] = "データの登録に失敗しました。";
+    $_SESSION['register_err'] = 'データの登録に失敗しました。<br>従業員番号がすでに存在しているかもしれません。';
     nextpage("registerform");
     // echo "データの登録に失敗しました   <br>詳細：" . $poe->getMessage(); //debug用
     exit;

@@ -13,6 +13,7 @@ if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] !== 1) {
 }
 
 $db_err = $_SESSION["error_message_list"] ?? "";
+unset($_SESSION["error_message_list"]);
 // $safeties = get_all_safety();
 $users = get_info();
 ?>
