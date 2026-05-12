@@ -1,3 +1,12 @@
+<?php
+require_once __DIR__ . "/../../helpers/def.php";
+session_start();
+
+if (empty($_SESSION["dept_no"]) || $_SESSION["dept_no"] !== 1) {
+    header("Location: " . TEAM_SYSTEM . "/client/index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
